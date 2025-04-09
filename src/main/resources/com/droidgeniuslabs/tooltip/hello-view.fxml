@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.droidgeniuslabs.tooltip.HelloController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label  text="Tooltip" textFill="black" textOverrun="CENTER_ELLIPSIS"/>
+    <Button fx:id="areaButton" text="Area Converter" textFill="darkred" onAction="#openAreaConverter"/>
+    <Button fx:id="bmiButton" text="BMI Calc" textFill="darkred" onAction="#openBMICalc"/>
+    <Button fx:id="dataButton" text="Data Converter" textFill="darkred" onMouseClicked="#openDataConverter"/>
+    <Button fx:id="discountButton" text="Discount Calc" textFill="darkred" onAction="#openDiscountCalc"/>
+    <Button fx:id="lengthButton" text="Length Converter" textFill="darkred" onAction="#openLengthConverter"/>
+    <Button fx:id="massButton" text="Mass Converter" textFill="darkred" onAction="#openMassConverter"/>
+</VBox>
