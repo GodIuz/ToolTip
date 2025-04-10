@@ -1,6 +1,5 @@
 package com.droidgeniuslabs.tooltip;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -28,12 +27,13 @@ public class TimeConverter {
             double inputValue = Double.parseDouble(inputField.getText().trim());
             String inputUnit = inputUnitComboBox.getValue().toString();
             String outputUnit = outputUnitComboBox.getValue().toString();
+            timeConverter(inputValue,inputUnit,outputUnit);
         }catch (NumberFormatException e){
             outputField.setText("Invalid input.");
         }
     }
 
-    private void timeConverter(double inValue, String inputUnit, double outValue, String outputUnit){
+    private void timeConverter(double inValue, String inputUnit, String outputUnit){
 
     }
 }
