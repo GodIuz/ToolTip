@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.VBox?>
-<VBox xmlns="http://javafx.com/javafx" spacing="10" alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.droidgeniuslabs.tooltip.TimeConverter"
-      prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.droidgeniuslabs.tooltip.TimeConverter">
+    <Label text="Enter Value:" />
+    <TextField fx:id="inputField" prefHeight="25.0" prefWidth="476.0" promptText="Enter value" />
+    <Label text="Select Input Unit:" textAlignment="RIGHT" />
+    <ComboBox fx:id="inputUnitComboBox" />
+    <Label text="Select Output Unit:" />
+    <ComboBox fx:id="outputUnitComboBox" />
+    <Button onAction="#handleTimeConvert" text="Convert" />
+    <Label text="Converted Value:" />
+    <TextField fx:id="outputField" editable="false" promptText="Converted value will appear here" />
 </VBox>
