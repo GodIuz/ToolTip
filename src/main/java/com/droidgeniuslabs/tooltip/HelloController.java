@@ -1,14 +1,10 @@
 package com.droidgeniuslabs.tooltip;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,32 +21,22 @@ public class HelloController {
     public Button speedButton;
     public Button temperatureButton;
     public Button timeButton;
+    public Button volumeButton;
 
     private void openWindow(String fxmlPath, String title) {
-        Stage existingStage = openStages.get(title);
+        try {
+              FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+              Parent root = loader.load();
+              Stage newStage = new Stage();
+              newStage.setTitle(title);
+              newStage.setScene(new Scene(root));
+              newStage.setAlwaysOnTop(true);
+              newStage.setOnCloseRequest(e -> openStages.remove(title));
+              openStages.put(title, newStage);
+              newStage.show();
 
-        if (existingStage == null || !existingStage.isShowing()) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
-                Parent root = loader.load();
-
-                Stage newStage = new Stage();
-                newStage.setTitle(title);
-                newStage.setScene(new Scene(root));
-                newStage.setAlwaysOnTop(true);
-                // Cleanup on close
-                newStage.setOnCloseRequest(e -> openStages.remove(title));
-
-                openStages.put(title, newStage);
-                newStage.show();
-            } catch (IOException e) {
+        } catch (IOException e) {
                 e.printStackTrace();
-            }
-        } else {
-            existingStage.toFront(); // Bring existing window to front
-            if (existingStage.isIconified()) {
-                existingStage.setIconified(false); // Restore if minimized
-            }
         }
     }
 
@@ -91,7 +77,7 @@ public class HelloController {
     }
 
     public void openTimeConverter(){
-        openWindow("time.fxml", "Time Converter");
+        openWindow("time_converter.fxml", "Time Converter");
     }
 
     public void openVolumeConverter(){
