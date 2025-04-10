@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.droidgeniuslabs.tooltip.BmiCalc"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" spacing="20.0"
+      fx:controller="com.droidgeniuslabs.tooltip.BmiCalc"
+      prefHeight="400.0" prefWidth="600.0" alignment="CENTER">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <Label text="Height: " textFill="black"/>
+    <TextField fx:id="heightTextField" promptText="Enter your height (in meter)"/>
+    <Label text="Weight: " textFill="black"/>
+    <TextField fx:id="wightTextField" promptText="Enter your weight (in kg)"/>
+    <Button text="Calculate" onAction="#calculateBMI"/>
+    <Label fx:id="resultLabel" />
+</VBox>

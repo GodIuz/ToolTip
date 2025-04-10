@@ -4,8 +4,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
+
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,6 +26,7 @@ public class HelloController {
     public Button temperatureButton;
     public Button timeButton;
     public Button volumeButton;
+    public Label aboutLabel;
 
     private void openWindow(String fxmlPath, String title) {
         try {
@@ -39,48 +44,46 @@ public class HelloController {
                 e.printStackTrace();
         }
     }
-
     public void openAreaConverter() {
-        openWindow("are_converter.fxml","Area Converter");
+        openWindow("area_converter.fxml","Area Converter");
     }
-
     public void openBMICalc() {
         openWindow("bmi_calc.fxml", "BMI Calc");
     }
-
     public void openDataConverter() {
         openWindow("data_converter.fxml", "Data Converter");
     }
-
     public void openDiscountCalc() {
         openWindow("discount_calc.fxml", "Discount Calc");
     }
-
     public void openLengthConverter() {
         openWindow("length_converter.fxml","Length Converter");
     }
-
     public void openMassConverter() {
         openWindow("mass_converter.fxml", "Mass Converter");
     }
-
     public void openNumeralSystemConverter(){
         openWindow("numeral_system_converter.fxml", "Numeral System Converter");
     }
-
     public void openSpeedConverter(){
         openWindow("speed_converter.fxml", "Speed Converter");
     }
-
     public void openTemperatureConverter(){
         openWindow("temperature_converter.fxml", "Temperature Converter");
     }
-
     public void openTimeConverter(){
         openWindow("time_converter.fxml", "Time Converter");
     }
-
     public void openVolumeConverter(){
         openWindow("volume_converter.fxml", "Temperature Converter");
+    }
+
+    public void openAboutLink() {
+        try{
+            Desktop.getDesktop().browse(new URI("https://github.com/GodIuz"));
+            Desktop.getDesktop().browse(new URI("https://dev.notyezz.com"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

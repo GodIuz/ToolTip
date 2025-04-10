@@ -10,6 +10,8 @@ module com.droidgeniuslabs.tooltip {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
+    requires com.fasterxml.jackson.databind;
+    requires java.desktop;
 
     opens com.droidgeniuslabs.tooltip to javafx.fxml;
     exports com.droidgeniuslabs.tooltip;
