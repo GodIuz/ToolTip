@@ -29,4 +29,5 @@
         <Button fx:id="timeButton" text="Time Converter" textFill="darkred" onAction="#openTimeConverter"/>
         <Button fx:id="volumeButton" text="Volume Converter" textFill="darkred" onAction="#openVolumeConverter"/>
     </VBox>
+    <Button fx:id="closeButton" text="Close" textFill="darkred" onAction="#closeWindow"/>
 </VBox>

@@ -1,12 +1,13 @@
 package com.droidgeniuslabs.tooltip;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
@@ -27,6 +28,7 @@ public class HelloController {
     public Button timeButton;
     public Button volumeButton;
     public Label aboutLabel;
+    public Button closeButton;
 
     private void openWindow(String fxmlPath, String title) {
         try {
@@ -77,7 +79,6 @@ public class HelloController {
     public void openVolumeConverter(){
         openWindow("volume_converter.fxml", "Temperature Converter");
     }
-
     public void openAboutLink() {
         try{
             Desktop.getDesktop().browse(new URI("https://github.com/GodIuz"));
@@ -85,5 +86,9 @@ public class HelloController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public void closeWindow(ActionEvent actionEvent) {
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.close();
     }
 }
