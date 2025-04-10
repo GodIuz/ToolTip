@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<?import javafx.collections.FXCollections?>
 <VBox xmlns="http://javafx.com/javafx" spacing="10" alignment="CENTER"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.droidgeniuslabs.tooltip.NumeralSystemConverter"
-            prefHeight="400.0" prefWidth="600.0">
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.droidgeniuslabs.tooltip.NumeralSystemConverter"
+      prefHeight="400.0" prefWidth="600.0">
     <Label text="Input Number:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
     <TextField fx:id="inputField" promptText="Enter a number" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
     <ComboBox fx:id="baseComboBox" GridPane.rowIndex="0" GridPane.columnIndex="2"/>

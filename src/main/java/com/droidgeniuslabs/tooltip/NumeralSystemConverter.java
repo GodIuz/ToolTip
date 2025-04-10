@@ -63,7 +63,7 @@ public class NumeralSystemConverter {
         String input = inputField.getText().trim();
         String inputBase = baseComboBox.getValue().toString();
         String outputBase = outbaseComboBox.getValue().toString();
-        String convertedValue = "";
+        String convertedValue ;
         if (!input.isEmpty() && inputBase!=null &outputBase!=null){
             try{
                 int decimalValue = convertToDecimal(input,inputBase);

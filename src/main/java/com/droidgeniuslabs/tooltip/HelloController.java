@@ -36,7 +36,7 @@ public class HelloController {
               newStage.setTitle(title);
               newStage.setScene(new Scene(root));
               newStage.setAlwaysOnTop(true);
-              newStage.setOnCloseRequest(e -> openStages.remove(title));
+              newStage.setOnCloseRequest(_ -> openStages.remove(title));
               openStages.put(title, newStage);
               newStage.show();
 

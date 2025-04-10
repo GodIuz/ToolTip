@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
 <VBox xmlns="http://javafx.com/javafx" spacing="10" alignment="CENTER"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.droidgeniuslabs.tooltip.DataConverter"
-            prefHeight="400.0" prefWidth="600.0">
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.droidgeniuslabs.tooltip.DataConverter"
+      prefHeight="400.0" prefWidth="600.0">
 
     <Label text="Enter Value:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
     <TextField fx:id="inputField" promptText="Enter number" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
