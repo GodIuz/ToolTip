@@ -125,4 +125,50 @@ public class Utilities {
         double finalPrice = initialPrice - discountAmount;
         return finalPrice;
     }
+    public double fromAreaConvert(double value, String unit) {
+        return switch (unit) {
+            case "Square meter (m²)" -> value;
+            case "Square kilometer (km²)" -> value * 1_000_000;
+            case "Hectare (ha)" -> value * 10_000;
+            case "Are (a)" -> value * 100;
+            case "Square decimeter (dm²)" -> value * 0.01;
+            case "Square centimeter (cm²)" -> value * 0.0001;
+            case "Square millimeter (mm²)" -> value * 0.000001;
+            case "Acre (ac)" -> value * 4046.8564224;
+            case "Square mile (mile²)" -> value * 2_589_988.110336;
+            case "Square yard (yd²)" -> value * 0.83612736;
+            case "Square foot (ft²)" -> value * 0.09290304;
+            case "Square inch (in²)" -> value * 0.00064516;
+            case "Square rod (rd²)" -> value * 25.29285264;
+            case "Qing (qing)" -> value * 6_666_666.6667;
+            case "Mu (mu)" -> value * 666.6666667;
+            case "Square chi (chi²)" -> value * 0.1111111111;
+            case "Square cun (cun²)" -> value * 0.0011111111;
+            case "Square gongli (gongli²)" -> value * 1_000_000; // same as km²
+            default -> throw new IllegalArgumentException("Unknown unit: " + unit);
+        };
+    }
+    public double toAreaConvert(double value, String unit) {
+        return switch (unit) {
+            case "Square meter (m²)" -> value;
+            case "Square kilometer (km²)" -> value / 1_000_000;
+            case "Hectare (ha)" -> value / 10_000;
+            case "Are (a)" -> value / 100;
+            case "Square decimeter (dm²)" -> value / 0.01;
+            case "Square centimeter (cm²)" -> value / 0.0001;
+            case "Square millimeter (mm²)" -> value / 0.000001;
+            case "Acre (ac)" -> value / 4046.8564224;
+            case "Square mile (mile²)" -> value / 2_589_988.110336;
+            case "Square yard (yd²)" -> value / 0.83612736;
+            case "Square foot (ft²)" -> value / 0.09290304;
+            case "Square inch (in²)" -> value / 0.00064516;
+            case "Square rod (rd²)" -> value / 25.29285264;
+            case "Qing (qing)" -> value / 6_666_666.6667;
+            case "Mu (mu)" -> value / 666.6666667;
+            case "Square chi (chi²)" -> value / 0.1111111111;
+            case "Square cun (cun²)" -> value / 0.0011111111;
+            case "Square gongli (gongli²)" -> value / 1_000_000; // same as km²
+            default -> throw new IllegalArgumentException("Unknown unit: " + unit);
+        };
+    }
 }

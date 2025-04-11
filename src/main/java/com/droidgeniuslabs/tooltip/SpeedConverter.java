@@ -34,7 +34,7 @@ public class SpeedConverter {
             Utilities utilities = new Utilities();
             double valueInMetersPerSecond = utilities.convertToMetersPerSecond(inputValue, inputBase);
             double result = utilities.convertFromMetersPerSecond(valueInMetersPerSecond, outputBase);
-            outputField.setText(String.format("Result: %.6f",result));
+            outputField.setText(String.format("Result : %.6f",result));
         }catch (NumberFormatException e){
             outputField.setText("Invalid input");
         }

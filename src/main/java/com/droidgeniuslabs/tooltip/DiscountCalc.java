@@ -20,7 +20,7 @@ public class DiscountCalc {
                 return;
             }
             double finalPrice = utilities.discountCalc(initialPrice,discountPercent);
-            finalPriceLabel.setText(String.format("Final Price: %.2f €", finalPrice));
+            finalPriceLabel.setText(String.format("Final Price : %.2f €", finalPrice));
             finalPriceLabel.setTextFill(Color.GREEN);
         } catch (NumberFormatException e) {
             finalPriceLabel.setText("Please enter numbers only.");
