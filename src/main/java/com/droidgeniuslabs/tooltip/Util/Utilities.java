@@ -1,6 +1,15 @@
 package com.droidgeniuslabs.tooltip.Util;
 
+import org.json.JSONObject;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 public class Utilities {
+    private final String API_KEY = "acecfc556779dc60b6992973";
+    private final String API_URL = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/";
     public double convertToBytes(double value, String unit) {
         switch (unit.toLowerCase()) {
             case "kilobytes":
@@ -259,26 +268,112 @@ public class Utilities {
     }
     public double fromMassConvert(double value, String unit){
         return switch (unit){
-            case "" -> value;
+            case "Tonne (t)" -> value * 1000;
+            case "Kilogram (kg)" -> value;
+            case "Gram (g)" -> value * 0.001;
+            case "Milligram (mg)" -> value * 0.000001;
+            case "Microgram (μg)" -> value * 0.000000001;
+            case "Quintal (q)" -> value * 100;
+            case "Ounce (oz)" -> value * 0.0283495;
+            case "Pound (lb)" -> value * 0.453592;
+            case "Carat (ct)" -> value * 0.0002;
+            case "Grain (gr)" -> value * 0.0000648;
+            case "Long ton (l.t)" -> value * 1016.05;
+            case "Short ton (sh.t)" -> value * 907.184;
+            case "UK hundredweight (cwt)" -> value * 50.8;
+            case "US hundredweight (cwt)" -> value * 45.3592;
+            case "Stone (st)" -> value * 6.35029;
+            case "Dram (dr)" -> value * 0.001771;
+            case "Dan (dan)" -> value * 50;
+            case "Jin (jin)" -> value * 0.5;
+            case "Qian (qian)" -> value * 0.05;
+            case "Liang (liang)" -> value * 0.5;
             default -> throw new IllegalArgumentException("Unknown unit" + unit);
         };
     }
     public double toMassConvert(double value, String unit){
         return switch (unit){
-            case "" -> value;
+            case "Tonne (t)" -> value / 1000;
+            case "Kilogram (kg)" -> value;
+            case "Gram (g)" -> value / 0.001;
+            case "Milligram (mg)" -> value / 0.000001;
+            case "Microgram (μg)" -> value / 0.000000001;
+            case "Quintal (q)" -> value / 100;
+            case "Ounce (oz)" -> value / 0.0283495;
+            case "Pound (lb)" -> value / 0.453592;
+            case "Carat (ct)" -> value / 0.0002;
+            case "Grain (gr)" -> value / 0.0000648;
+            case "Long ton (l.t)" -> value / 1016.05;
+            case "Short ton (sh.t)" -> value / 907.184;
+            case "UK hundredweight (cwt)" -> value / 50.8;
+            case "US hundredweight (cwt)" -> value / 45.3592;
+            case "Stone (st)" -> value / 6.35029;
+            case "Dram (dr)" -> value / 0.001771;
+            case "Dan (dan)" -> value / 50;
+            case "Jin (jin)" -> value / 0.5;
+            case "Qian (qian)" -> value / 0.05;
+            case "Liang (liang)" -> value / 0.5;
             default -> throw new IllegalArgumentException("Unknown unit" + unit);
         };
     }
-    public double fromVolumeConvert(double value, String unit){
-        return switch (unit){
-            case "" -> value;
-            default -> throw new IllegalArgumentException("Unknown unit" + unit);
-        };
+    public double toLiters(String unit, double value) {
+        switch (unit) {
+            case "Cubic meter (m³)": return value * 1000;
+            case "Cubic decimeter (dm³)": return value;
+            case "Cubic centimeter (cm³)": return value / 1000;
+            case "Cubic millimeter (mm³)": return value / 1_000_000;
+            case "Hectoliter (hl)": return value * 100;
+            case "Liter (l)": return value;
+            case "Deciliter (dl)": return value / 10;
+            case "Centiliter (cl)": return value / 100;
+            case "Milliliter (ml)": return value / 1000;
+            case "Cubic foot (ft³)": return value * 28.3168;
+            case "Cubic inch (in³)": return value * 0.0163871;
+            case "Cubic yard (yd³)": return value * 764.555;
+            case "Acre-foot (af³)": return value * 1_233_481.84;
+            case "US gallon (gal)": return value * 3.78541;
+            case "Imperial gallon (imp gal)": return value * 4.54609;
+            default: return value;
+        }
     }
-    public double toVolumeConvert(double value, String unit){
-        return switch (unit){
-            case "" -> value;
-            default -> throw new IllegalArgumentException("Unknown unit" + unit);
-        };
+
+    public double fromLiters(String unit, double value) {
+        switch (unit) {
+            case "Cubic meter (m³)": return value / 1000;
+            case "Cubic decimeter (dm³)": return value;
+            case "Cubic centimeter (cm³)": return value * 1000;
+            case "Cubic millimeter (mm³)": return value * 1_000_000;
+            case "Hectoliter (hl)": return value / 100;
+            case "Liter (l)": return value;
+            case "Deciliter (dl)": return value * 10;
+            case "Centiliter (cl)": return value * 100;
+            case "Milliliter (ml)": return value * 1000;
+            case "Cubic foot (ft³)": return value / 28.3168;
+            case "Cubic inch (in³)": return value / 0.0163871;
+            case "Cubic yard (yd³)": return value / 764.555;
+            case "Acre-foot (af³)": return value / 1_233_481.84;
+            case "US gallon (gal)": return value / 3.78541;
+            case "Imperial gallon (imp gal)": return value / 4.54609;
+            default: return value;
+        }
+    }
+    public double getExchangeRate(String from, String to) throws IOException {
+        URL url = new URL(API_URL + "/" + from);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+        httpURLConnection.setRequestMethod("GET");
+        int status = httpURLConnection.getResponseCode();
+        if(status != 200){
+            return -1;
+        }
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+        StringBuilder stringBuilder = new StringBuilder();
+        String inputLine;
+        while((inputLine = bufferedReader.readLine())!=null){
+            stringBuilder.append(inputLine);
+        }
+        bufferedReader.close();
+        JSONObject jsonpObject = new JSONObject(stringBuilder.toString());
+        JSONObject rates = jsonpObject.getJSONObject("conversion_rates");
+        return rates.getDouble(to);
     }
 }

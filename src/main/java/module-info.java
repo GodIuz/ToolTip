@@ -12,6 +12,7 @@ module com.droidgeniuslabs.tooltip {
     requires com.almasb.fxgl.all;
     requires com.fasterxml.jackson.databind;
     requires java.desktop;
+    requires org.json;
 
     opens com.droidgeniuslabs.tooltip to javafx.fxml;
     exports com.droidgeniuslabs.tooltip;

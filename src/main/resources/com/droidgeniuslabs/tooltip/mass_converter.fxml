@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.AnchorPane?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.droidgeniuslabs.tooltip.Controllers.MassConverter"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
 
-</AnchorPane>
+<VBox xmlns="http://javafx.com/javafx" spacing="10" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.droidgeniuslabs.tooltip.Controllers.MassConverter"
+      prefHeight="400.0" prefWidth="600.0">
+
+    <Label text="Enter Value"/>
+    <TextField fx:id="inputField" promptText="Enter number" />
+
+    <Label text="Select Input Unit:"/>
+    <ComboBox fx:id="inputUnitComboBox"/>
+
+    <Label text="Select Output Unit:"/>
+    <ComboBox fx:id="outputUnitComboBox"/>
+
+    <Button text="Convert" onAction="#handleMassConvert"/>
+
+    <TextField fx:id="outputField" editable="false" promptText="Converted value will appear here"/>
+
+</VBox>

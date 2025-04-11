@@ -4,6 +4,8 @@ import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +21,11 @@ public class AreaConverter {
 
     @FXML
     public void initialize(){
+        Stage stage = new Stage();
+        stage.setWidth(500);
+        stage.setHeight(500);
+        stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.TRANSPARENT);
         inputAreaUnitComboBox.getItems().addAll(units);
         outputAreaUnitComboBox.getItems().addAll(units);
         inputAreaUnitComboBox.setValue("Square meter (m²)");

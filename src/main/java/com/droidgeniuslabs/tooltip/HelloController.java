@@ -1,8 +1,6 @@
 package com.droidgeniuslabs.tooltip;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -28,7 +26,7 @@ public class HelloController {
     public Button timeButton;
     public Button volumeButton;
     public Label aboutLabel;
-    public Button closeButton;
+    public Button currencyButton;
 
     private void openWindow(String fxmlPath, String title) {
         try {
@@ -41,7 +39,6 @@ public class HelloController {
               newStage.setOnCloseRequest(_ -> openStages.remove(title));
               openStages.put(title, newStage);
               newStage.show();
-
         } catch (IOException e) {
                 e.printStackTrace();
         }
@@ -77,7 +74,7 @@ public class HelloController {
         openWindow("time_converter.fxml", "Time Converter");
     }
     public void openVolumeConverter(){
-        openWindow("volume_converter.fxml", "Temperature Converter");
+        openWindow("volume_converter.fxml", "Volume Converter");
     }
     public void openAboutLink() {
         try{
@@ -87,8 +84,7 @@ public class HelloController {
             e.printStackTrace();
         }
     }
-    public void closeWindow(ActionEvent actionEvent) {
-        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        stage.close();
+    public void openCurrencyConverter() {
+        openWindow("currency_converter.fxml", "Currency Converter");
     }
 }

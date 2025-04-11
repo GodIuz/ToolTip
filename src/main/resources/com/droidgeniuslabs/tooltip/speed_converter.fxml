@@ -10,8 +10,8 @@
     <Label text="Enter a value :" />
     <TextField fx:id="speedField" promptText="Enter temperature"/>
     <ComboBox fx:id="fromSpeed"/>
-    <ComboBox fx:id="toSpeed"/>
     <Label text="To:"/>
+    <ComboBox fx:id="toSpeed"/>
     <Button onAction="#handleSpeedConvert" text="Convert" />
     <Label text="Converted Value:" />
     <TextField fx:id="outputField" editable="false" promptText="Converted value will appear here" />

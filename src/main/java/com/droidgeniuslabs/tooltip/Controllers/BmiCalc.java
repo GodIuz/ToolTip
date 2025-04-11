@@ -4,6 +4,8 @@ import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class BmiCalc {
     public TextField heightTextField;
@@ -12,6 +14,11 @@ public class BmiCalc {
 
     @FXML
     public void calculateBMI() {
+        Stage stage = new Stage();
+        stage.setWidth(500);
+        stage.setHeight(500);
+        stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.TRANSPARENT);
         try{
             double height =  Double.parseDouble(heightTextField.getText());
             double weight =  Double.parseDouble(wightTextField.getText());

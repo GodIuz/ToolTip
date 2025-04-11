@@ -4,6 +4,9 @@ import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -41,6 +44,11 @@ public class LengthConverter {
 
     @FXML
     public void initialize(){
+        Stage stage = new Stage();
+        stage.setWidth(500);
+        stage.setHeight(500);
+        stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.TRANSPARENT);
         inputUnitComboBox.getItems().addAll(units.keySet());
         outputUnitComboBox.getItems().addAll(units.keySet());
         inputUnitComboBox.setValue("meter (m)");

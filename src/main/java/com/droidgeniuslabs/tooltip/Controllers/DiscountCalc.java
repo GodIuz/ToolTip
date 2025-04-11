@@ -4,12 +4,19 @@ import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class DiscountCalc {
     public TextField originalPriceTextField;
     public TextField discountField;
     public Label finalPriceLabel;
     public void calculateDiscount() {
+        Stage stage = new Stage();
+        stage.setWidth(500);
+        stage.setHeight(500);
+        stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.TRANSPARENT);
         try{
             double initialPrice = Double.parseDouble(originalPriceTextField.getText());
             double discountPercent = Double.parseDouble(discountField.getText());

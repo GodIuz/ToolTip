@@ -6,6 +6,9 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,6 +23,11 @@ public class NumeralSystemConverter {
 
     @FXML
     public void initialize() {
+        Stage stage = new Stage();
+        stage.setWidth(500);
+        stage.setHeight(500);
+        stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.TRANSPARENT);
         baseComboBox.getItems().addAll(units);
         outbaseComboBox.getItems().addAll(units);
         baseComboBox.setValue("Binary");

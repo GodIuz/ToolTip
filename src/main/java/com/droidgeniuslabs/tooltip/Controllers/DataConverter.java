@@ -4,6 +4,8 @@ import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +19,11 @@ public class DataConverter {
 
     @FXML
     public void initialize() {
+        Stage stage = new Stage();
+        stage.setWidth(500);
+        stage.setHeight(500);
+        stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.TRANSPARENT);
         inputUnitComboBox.getItems().addAll(units);
         outputUnitComboBox.getItems().addAll(units);
         inputUnitComboBox.setValue("Bytes");

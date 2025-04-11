@@ -4,6 +4,8 @@ import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +21,11 @@ public class SpeedConverter {
 
     @FXML
     public void initialize(){
+        Stage stage = new Stage();
+        stage.setWidth(500);
+        stage.setHeight(500);
+        stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.TRANSPARENT);
         fromSpeed.getItems().addAll(units);
         toSpeed.getItems().addAll(units);
         fromSpeed.setValue("Meter per second (m/s)");

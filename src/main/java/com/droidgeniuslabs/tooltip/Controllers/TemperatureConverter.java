@@ -6,6 +6,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +21,11 @@ public class TemperatureConverter {
 
     @FXML
     public void initialize() {
+        Stage stage = new Stage();
+        stage.setWidth(500);
+        stage.setHeight(500);
+        stage.setAlwaysOnTop(true);
+        stage.initStyle(StageStyle.TRANSPARENT);
         fromUnit.getItems().addAll(units);
         toUnit.getItems().addAll(units);
         fromUnit.setValue("Celsius");
