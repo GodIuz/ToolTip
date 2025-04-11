@@ -1,7 +1,6 @@
 package com.droidgeniuslabs.tooltip;
 
 import com.droidgeniuslabs.tooltip.Util.Utilities;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
