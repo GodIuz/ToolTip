@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Main-Class: 
+Class-Path: javafx-graphics-17.0.6.jar fxgl-entity-17.3.jar ikonli-core-
+ 12.3.1.jar javafx-swing-17.0.6.jar ikonli-javafx-12.3.1.jar javafx-base
+ -17.0.6.jar controlsfx-11.2.1.jar jackson-annotations-2.14.2.jar javafx
+ -graphics-17.0.6-win.jar opentest4j-1.3.0.jar bootstrapfx-core-0.4.0.ja
+ r countries-21.0.3.jar util-4.0.17.jar toolboxfx-21.0.3.jar javafx-web-
+ 17.0.6-win.jar javafx-media-17.0.6.jar fxgl-17.3.jar storage-4.0.17.jar
+  formsfx-core-11.6.0.jar fxgl-gameplay-17.3.jar lifecycle-4.0.17.jar ap
+ iguardian-api-1.1.2.jar javafx-fxml-17.0.6-win.jar javafx-swing-17.0.6-
+ win.jar tilesfx-21.0.3.jar annotations-13.0.jar javafx-web-17.0.6.jar f
+ xgl-scene-17.3.jar javafx-fxml-17.0.6.jar junit-jupiter-engine-5.10.2.j
+ ar validatorfx-0.5.0.jar javafx-controls-17.0.6.jar javafx-media-17.0.6
+ -win.jar audio-4.0.17.jar json-20231013.jar heatmap-21.0.3.jar jackson-
+ core-2.14.2.jar kotlin-stdlib-common-1.8.10.jar javafx-base-17.0.6-win.
+ jar fxgl-core-17.3.jar junit-jupiter-api-5.10.2.jar jackson-databind-2.
+ 14.2.jar kotlin-stdlib-1.8.10.jar junit-platform-engine-1.10.2.jar fxgl
+ -io-17.3.jar junit-platform-commons-1.10.2.jar javafx-controls-17.0.6-w
+ in.jar toolbox-21.0.5.jar
+
