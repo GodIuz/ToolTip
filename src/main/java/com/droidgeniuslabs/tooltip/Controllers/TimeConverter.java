@@ -1,4 +1,4 @@
-package com.droidgeniuslabs.tooltip;
+package com.droidgeniuslabs.tooltip.Controllers;
 
 import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
@@ -28,6 +28,9 @@ public class TimeConverter {
             String inputUnit = inputUnitComboBox.getValue().toString();
             String outputUnit = outputUnitComboBox.getValue().toString();
             Utilities utilities = new Utilities();
+            double time = utilities.fromTimeConvert(inputValue, inputUnit);
+            double result = utilities.toTimeConvert(time,outputUnit);
+            outputField.setText(String.format("Result : %.6f",result));
         }catch (NumberFormatException e){
             outputField.setText("Invalid input.");
         }

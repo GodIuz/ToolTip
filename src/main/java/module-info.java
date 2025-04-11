@@ -15,4 +15,6 @@ module com.droidgeniuslabs.tooltip {
 
     opens com.droidgeniuslabs.tooltip to javafx.fxml;
     exports com.droidgeniuslabs.tooltip;
+    exports com.droidgeniuslabs.tooltip.Controllers;
+    opens com.droidgeniuslabs.tooltip.Controllers to javafx.fxml;
 }

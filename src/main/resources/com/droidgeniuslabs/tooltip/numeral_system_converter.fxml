@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <VBox xmlns="http://javafx.com/javafx" spacing="10" alignment="CENTER"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.droidgeniuslabs.tooltip.NumeralSystemConverter"
+      fx:controller="com.droidgeniuslabs.tooltip.Controllers.NumeralSystemConverter"
       prefHeight="400.0" prefWidth="600.0">
     <Label text="Input Number:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
     <TextField fx:id="inputField" promptText="Enter a number" GridPane.rowIndex="0" GridPane.columnIndex="1"/>

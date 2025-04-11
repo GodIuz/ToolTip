@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx" spacing="10" alignment="CENTER"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.droidgeniuslabs.tooltip.SpeedConverter"
+      fx:controller="com.droidgeniuslabs.tooltip.Controllers.SpeedConverter"
       prefHeight="400.0" prefWidth="600.0">
 
     <Label text="Enter a value :" />

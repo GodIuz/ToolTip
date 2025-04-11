@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.droidgeniuslabs.tooltip.TimeConverter">
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.droidgeniuslabs.tooltip.Controllers.TimeConverter">
     <Label text="Enter Value:" />
     <TextField fx:id="inputField" prefHeight="25.0" prefWidth="476.0" promptText="Enter value" />
     <Label text="Select Input Unit:" textAlignment="RIGHT" />

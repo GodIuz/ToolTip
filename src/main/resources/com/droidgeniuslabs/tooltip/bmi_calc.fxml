@@ -6,7 +6,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" spacing="20.0"
-      fx:controller="com.droidgeniuslabs.tooltip.BmiCalc"
+      fx:controller="com.droidgeniuslabs.tooltip.Controllers.BmiCalc"
       prefHeight="400.0" prefWidth="600.0" alignment="CENTER">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>

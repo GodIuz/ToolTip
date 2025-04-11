@@ -171,4 +171,114 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit: " + unit);
         };
     }
+    public double fromTimeConvert(double value, String unit) {
+        return switch (unit) {
+            case "Picoseconds (ps)" -> value * 0.000000000001;
+            case "Microseconds (μs)" -> value * 0.000001;
+            case "Milliseconds (ms)" -> value * 0.001;
+            case "Second (s)" -> value;
+            case "Minute (m)" -> value * 60;
+            case "Hour (h)" -> value * 3600;
+            case "Day (d)" -> value * 86400;
+            case "Week (wk)" -> value * 604800;
+            case "Year (y)" -> value * 31_536_000;
+            default -> throw new IllegalArgumentException("Unknown unit: " + unit);
+        };
+    }
+    public double toTimeConvert(double value, String unit) {
+        return switch (unit) {
+            case "Picoseconds (ps)" -> value / 1e-12;
+            case "Microseconds (μs)" -> value / 1e-6;
+            case "Milliseconds (ms)" -> value / 1e-3;
+            case "Second (s)" -> value;
+            case "Minute (m)" -> value / 60;
+            case "Hour (h)" -> value / 3600;
+            case "Day (d)" -> value / 86400;
+            case "Week (wk)" -> value / 604800;
+            case "Year (y)" -> value / 31_536_000;
+            default -> throw new IllegalArgumentException("Unknown unit: " + unit);
+        };
+    }
+    public double fromDistanceConvert(double value, String unit) {
+        return switch (unit) {
+            case "kilometer (km)" -> value * 1000;
+            case "meter (m)" -> value;
+            case "decimeter (dm)" -> value * 0.1;
+            case "centimeter (cm)" -> value * 0.01;
+            case "millimeter (mm)" -> value * 0.001;
+            case "micrometer (μm)" -> value * 1e-6;
+            case "nanometer (nm)" -> value * 1e-9;
+            case "picometer (pm)" -> value * 1e-12;
+            case "nautical mile (nmi)" -> value * 1852;
+            case "mile (mi)" -> value * 1609.344;
+            case "fathom (ftm)" -> value * 1.8288;
+            case "yard (yd)" -> value * 0.9144;
+            case "gongli (gongli)" -> value * 500;
+            case "li (li)" -> value * 500;
+            case "zhang (zhang)" -> value * 3.3;
+            case "chi (chi)" -> value * 0.33;
+            case "cun (cun)" -> value * 0.033;
+            case "fen (fen)" -> value * 0.0033;
+            case "lii (lii)" -> value * 0.00033;
+            case "hao (hao)" -> value * 1e-5;
+            case "parsec (pc)" -> value * 3.085677581e16;
+            case "lunar distance (ld)" -> value * 384400000;
+            case "astronomical unit (AU)" -> value * 1.496e11;
+            case "light year (ly)" -> value * 9.461e15;
+            default -> throw new IllegalArgumentException("Unknown unit: " + unit);
+        };
+    }
+    public double toDistanceConvert(double value, String unit) {
+        return switch (unit) {
+            case "kilometer (km)" -> value / 1000;
+            case "meter (m)" -> value;
+            case "decimeter (dm)" -> value / 0.1;
+            case "centimeter (cm)" -> value / 0.01;
+            case "millimeter (mm)" -> value / 0.001;
+            case "micrometer (μm)" -> value / 1e-6;
+            case "nanometer (nm)" -> value / 1e-9;
+            case "picometer (pm)" -> value / 1e-12;
+            case "nautical mile (nmi)" -> value / 1852;
+            case "mile (mi)" -> value / 1609.344;
+            case "fathom (ftm)" -> value / 1.8288;
+            case "yard (yd)" -> value / 0.9144;
+            case "gongli (gongli)" -> value / 500;
+            case "li (li)" -> value / 500;
+            case "zhang (zhang)" -> value / 3.3;
+            case "chi (chi)" -> value / 0.33;
+            case "cun (cun)" -> value / 0.033;
+            case "fen (fen)" -> value / 0.0033;
+            case "lii (lii)" -> value / 0.00033;
+            case "hao (hao)" -> value / 1e-5;
+            case "parsec (pc)" -> value / 3.085677581e16;
+            case "lunar distance (ld)" -> value / 384400000;
+            case "astronomical unit (AU)" -> value / 1.496e11;
+            case "light year (ly)" -> value / 9.461e15;
+            default -> throw new IllegalArgumentException("Unknown unit: " + unit);
+        };
+    }
+    public double fromMassConvert(double value, String unit){
+        return switch (unit){
+            case "" -> value;
+            default -> throw new IllegalArgumentException("Unknown unit" + unit);
+        };
+    }
+    public double toMassConvert(double value, String unit){
+        return switch (unit){
+            case "" -> value;
+            default -> throw new IllegalArgumentException("Unknown unit" + unit);
+        };
+    }
+    public double fromVolumeConvert(double value, String unit){
+        return switch (unit){
+            case "" -> value;
+            default -> throw new IllegalArgumentException("Unknown unit" + unit);
+        };
+    }
+    public double toVolumeConvert(double value, String unit){
+        return switch (unit){
+            case "" -> value;
+            default -> throw new IllegalArgumentException("Unknown unit" + unit);
+        };
+    }
 }

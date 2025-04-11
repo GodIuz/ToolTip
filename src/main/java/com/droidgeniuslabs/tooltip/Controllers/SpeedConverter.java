@@ -1,4 +1,4 @@
-package com.droidgeniuslabs.tooltip;
+package com.droidgeniuslabs.tooltip.Controllers;
 
 import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;

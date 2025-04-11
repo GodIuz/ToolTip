@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" spacing="20"
-      fx:controller="com.droidgeniuslabs.tooltip.DiscountCalc"
+      fx:controller="com.droidgeniuslabs.tooltip.Controllers.DiscountCalc"
       prefHeight="400.0" prefWidth="600.0" alignment="CENTER">
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>
