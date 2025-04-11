@@ -1,5 +1,6 @@
 package com.droidgeniuslabs.tooltip;
 
+import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -24,49 +25,16 @@ public class NumeralSystemConverter {
         baseComboBox.setValue("Binary");
         outbaseComboBox.setValue("Decimal");
     }
-    private int convertToDecimal(String input, String base) {
-        int decimalValue = 0;
-
-        switch (base) {
-            case "Binary":
-                decimalValue = Integer.parseInt(input, 2);
-                break;
-            case "Octal":
-                decimalValue = Integer.parseInt(input, 8);
-                break;
-            case "Decimal":
-                decimalValue = Integer.parseInt(input);
-                break;
-            case "Hexadecimal":
-                decimalValue = Integer.parseInt(input, 16);
-                break;
-        }
-
-        return decimalValue;
-    }
-    private String convertFromDecimal(int decimalValue, String base) {
-        switch (base) {
-            case "Binary":
-                return Integer.toBinaryString(decimalValue);
-            case "Octal":
-                return Integer.toOctalString(decimalValue);
-            case "Decimal":
-                return Integer.toString(decimalValue);
-            case "Hexadecimal":
-                return Integer.toHexString(decimalValue).toUpperCase();
-            default:
-                return "Invalid base";
-        }
-    }
     public void handleConvert() {
         String input = inputField.getText().trim();
         String inputBase = baseComboBox.getValue().toString();
         String outputBase = outbaseComboBox.getValue().toString();
         String convertedValue ;
+        Utilities utilities = new Utilities();
         if (!input.isEmpty() && inputBase!=null &outputBase!=null){
             try{
-                int decimalValue = convertToDecimal(input,inputBase);
-                convertedValue = convertFromDecimal(decimalValue, outputBase);
+                int decimalValue = utilities.convertToDecimal(input,inputBase);
+                convertedValue = utilities.convertFromDecimal(decimalValue, outputBase);
             }catch (NumberFormatException e){
                 convertedValue = "Invalid input for the selected base";
                 resultLabel.setTextFill(Color.RED);

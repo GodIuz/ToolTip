@@ -1,5 +1,6 @@
 package com.droidgeniuslabs.tooltip;
 
+import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -27,45 +28,14 @@ public class DataConverter {
             double inputValue = Double.parseDouble(inputField.getText().trim());
             String inputUnit = inputUnitComboBox.getValue().toString();
             String outputUnit = outputUnitComboBox.getValue().toString();
-            double inputInBytes = convertToBytes(inputValue, inputUnit);
-            double result = convertFromBytes(inputInBytes, outputUnit);
+            Utilities utilities = new Utilities();
+            double inputInBytes = utilities.convertToBytes(inputValue, inputUnit);
+            double result = utilities.convertFromBytes(inputInBytes, outputUnit);
             outputField.setText(String.valueOf(result));
         } catch (NumberFormatException e) {
             outputField.setText("Invalid input");
         }
     }
-    private double convertToBytes(double value, String unit) {
-        switch (unit.toLowerCase()) {
-            case "kilobytes":
-                return value * 1024;
-            case "megabytes":
-                return value * 1024 * 1024;
-            case "gigabytes":
-                return value * 1024 * 1024 * 1024;
-            case "terabytes":
-                return value * 1024 * 1024 * 1024 * 1024;
-            case "petabytes":
-                return value * 1024 * 1024 * 1024 * 1024 * 1024;
-            case "bytes":
-            default:
-                return value;
-        }
-    }
-    private double convertFromBytes(double value, String unit) {
-        switch (unit.toLowerCase()) {
-            case "kilobytes":
-                return value / 1024;
-            case "megabytes":
-                return value / (1024 * 1024);
-            case "gigabytes":
-                return value / (1024 * 1024 * 1024);
-            case "terabytes":
-                return value / (1024 * 1024 * 1024 * 1024);
-            case "petabytes":
-                return value / (1024 * 1024 * 1024 * 1024 * 1024);
-            case "bytes":
-            default:
-                return value;
-        }
-    }
+
 }
+

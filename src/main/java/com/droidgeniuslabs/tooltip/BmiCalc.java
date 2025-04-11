@@ -1,5 +1,6 @@
 package com.droidgeniuslabs.tooltip;
 
+import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -14,6 +15,7 @@ public class BmiCalc {
         try{
             double height =  Double.parseDouble(heightTextField.getText());
             double weight =  Double.parseDouble(wightTextField.getText());
+            Utilities utilities = new Utilities();
 
             if(weight <=0 || height <=0 ){
                 resultLabel.setText("The weight and height must be positive");
@@ -21,7 +23,7 @@ public class BmiCalc {
                 return;
             }
 
-            double bmi = weight / (height * height);
+            double bmi = utilities.bmiCalc(weight,height);
             String resultText;
 
             if (bmi < 18.5){

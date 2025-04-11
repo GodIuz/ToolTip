@@ -1,5 +1,6 @@
 package com.droidgeniuslabs.tooltip;
 
+import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -21,19 +22,14 @@ public class TimeConverter {
         inputUnitComboBox.setValue("Picoseconds (ps)");
         outputUnitComboBox.setValue("Microseconds (μs)");
     }
-
     public void handleTimeConvert() {
         try{
             double inputValue = Double.parseDouble(inputField.getText().trim());
             String inputUnit = inputUnitComboBox.getValue().toString();
             String outputUnit = outputUnitComboBox.getValue().toString();
-            timeConverter(inputValue,inputUnit,outputUnit);
+            Utilities utilities = new Utilities();
         }catch (NumberFormatException e){
             outputField.setText("Invalid input.");
         }
-    }
-
-    private void timeConverter(double inValue, String inputUnit, String outputUnit){
-
     }
 }
