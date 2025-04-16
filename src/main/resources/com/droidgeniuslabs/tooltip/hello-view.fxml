@@ -23,4 +23,5 @@
     <Button fx:id="temperatureButton" text="Temperature Converter" textFill="darkred" onAction="#openTemperatureConverter"/>
     <Button fx:id="timeButton" text="Time Converter" textFill="darkred" onAction="#openTimeConverter"/>
     <Button fx:id="volumeButton" text="Volume Converter" textFill="darkred" onAction="#openVolumeConverter"/>
+    <Button fx:id="vatButton" text="Vat Calculator" textFill="darkred" onAction="#openVatCalculator"/>
 </VBox>

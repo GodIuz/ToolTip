@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx" spacing="10" alignment="CENTER"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.droidgeniuslabs.tooltip.Controllers.VatCalculatorController"
+      prefHeight="400.0" prefWidth="600.0">
+    <Label text="VAT Calculator" style="-fx-font-size:18px;"/>
+    <HBox spacing="10">
+        <RadioButton fx:id="addVatRadio" text="Προσθήκη ΦΠΑ" toggleGroup="$vatModeToggle"/>
+        <RadioButton fx:id="removeVatRadio" text="Αφαίρεση ΦΠΑ" toggleGroup="$vatModeToggle"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Επιλογή ΦΠΑ (%):"/>
+        <ComboBox fx:id="vatRateComboBox"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Ποσό (€):"/>
+        <TextField fx:id="amountField"/>
+    </HBox>
+    <Button text="Υπολογισμός" onAction="#onCalculate"/>
+    <Label fx:id="resultLabel" style="-fx-font-size: 16px; -fx-text-fill: green;"/>
+</VBox>

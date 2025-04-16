@@ -27,7 +27,7 @@ public class HelloController {
     public Button volumeButton;
     public Label aboutLabel;
     public Button currencyButton;
-
+    public Button vatButton;
     private void openWindow(String fxmlPath, String title) {
         try {
               FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -87,4 +87,6 @@ public class HelloController {
     public void openCurrencyConverter() {
         openWindow("currency_converter.fxml", "Currency Converter");
     }
+    public void openVatCalculator(){openWindow("vat_calc.fxml", "Vat Calcualtor");}
+
 }
