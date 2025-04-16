@@ -5,23 +5,38 @@
 <?import javafx.scene.control.Button?>
 
 <?import javafx.scene.control.Label?>
-<VBox xmlns:fx="http://javafx.com/fxml" spacing="10" alignment="CENTER"
+<VBox xmlns:fx="http://javafx.com/fxml" spacing="10"
       fx:controller="com.droidgeniuslabs.tooltip.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
+
     <Label fx:id="aboutLabel" text="About" underline="true" onMouseClicked="#openAboutLink"/>
-    <Button fx:id="areaButton" text="Area Converter" textFill="darkred" onAction="#openAreaConverter"/>
-    <Button fx:id="bmiButton" text="BMI Calc" textFill="darkred" onAction="#openBMICalc"/>
-    <Button fx:id="dataButton" text="Data Converter" textFill="darkred" onAction="#openDataConverter"/>
-    <Button fx:id="currencyButton" text="Currency Converter" textFill="darkred" onAction="#openCurrencyConverter"/>
-    <Button fx:id="discountButton" text="Discount Calc" textFill="darkred" onAction="#openDiscountCalc"/>
-    <Button fx:id="lengthButton" text="Length Converter" textFill="darkred" onAction="#openLengthConverter"/>
-    <Button fx:id="massButton" text="Mass Converter" textFill="darkred" onAction="#openMassConverter"/>
-    <Button fx:id="numeralSystemButton" text="Numeral System Converter" textFill="darkred" onAction="#openNumeralSystemConverter"/>
-    <Button fx:id="speedButton" text="Speed Converter" textFill="darkred" onAction="#openSpeedConverter"/>
-    <Button fx:id="temperatureButton" text="Temperature Converter" textFill="darkred" onAction="#openTemperatureConverter"/>
-    <Button fx:id="timeButton" text="Time Converter" textFill="darkred" onAction="#openTimeConverter"/>
-    <Button fx:id="volumeButton" text="Volume Converter" textFill="darkred" onAction="#openVolumeConverter"/>
-    <Button fx:id="vatButton" text="Vat Calculator" textFill="darkred" onAction="#openVatCalculator"/>
+    <VBox alignment="TOP_LEFT" spacing="10">
+        <Button fx:id="areaButton" text="Area Converter" textFill="darkred" onAction="#openAreaConverter"/>
+        <Button fx:id="bmiButton" text="BMI Calc" textFill="darkred" onAction="#openBMICalc"/>
+        <Button fx:id="dataButton" text="Data Converter" textFill="darkred" onAction="#openDataConverter"/>
+        <Button fx:id="currencyButton" text="Currency Converter" textFill="darkred" onAction="#openCurrencyConverter"/>
+        <Button fx:id="discountButton" text="Discount Calc" textFill="darkred" onAction="#openDiscountCalc"/>
+        <Button fx:id="lengthButton" text="Length Converter" textFill="darkred" onAction="#openLengthConverter"/>
+        <Button fx:id="massButton" text="Mass Converter" textFill="darkred" onAction="#openMassConverter"/>
+    </VBox>
+    <VBox spacing="10" alignment="TOP_CENTER">
+        <Button fx:id="numeralSystemButton" text="Numeral System Converter" textFill="darkred" onAction="#openNumeralSystemConverter"/>
+        <Button fx:id="speedButton" text="Speed Converter" textFill="darkred" onAction="#openSpeedConverter"/>
+        <Button fx:id="temperatureButton" text="Temperature Converter" textFill="darkred" onAction="#openTemperatureConverter"/>
+        <Button fx:id="timeButton" text="Time Converter" textFill="darkred" onAction="#openTimeConverter"/>
+        <Button fx:id="volumeButton" text="Volume Converter" textFill="darkred" onAction="#openVolumeConverter"/>
+        <Button fx:id="vatButton" text="Vat Calculator" textFill="darkred" onAction="#openVatCalculator"/>
+        <Button fx:id="incomeVatCalculator" text="Income Vat Calculator" textFill="darkred" onAction="#onOpenIncomeTaxCalculator"/>
+    </VBox>
+    <VBox alignment="TOP_RIGHT" spacing="10">
+        <Button fx:id="timeZoneConverter" text="TimeZone Converter" textFill="darkred" onAction="#onOpenTimeZoneConverter"/>
+        <Button fx:id="unixTimestampButton" text="Unix TimeStamp Converter" textFill="darkred" onAction="#onOpenUnixTimestampConverter"/>
+        <Button fx:id="fuelButton" text="Fuel Converter" textFill="darkred" onAction="#onOpenFuelConverter"/>
+        <Button fx:id="ageButton" text="Age Calculator" textFill="darkred" onAction="#onOpenAgeCalculator"/>
+        <Button fx:id="powerConsumptionButton" text="Power Consumption Calculator" textFill="darkred" onAction="#onOpenPowerConsumptionCalculator"/>
+        <Button fx:id="textBinaryButton" text="Text Binary Converter" textFill="darkred" onAction="#onOpenTextBinaryConverter"/>
+        <Button fx:id="barcodeButton" text="Barcode Generator" textFill="darkred" onAction="#onopenBarcodeGenerator"/>
+    </VBox>
 </VBox>

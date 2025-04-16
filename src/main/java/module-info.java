@@ -11,8 +11,11 @@ module com.droidgeniuslabs.tooltip {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires com.fasterxml.jackson.databind;
-    requires java.desktop;
     requires org.json;
+    requires annotations;
+    requires javafx.swing;
+    requires com.google.zxing;
+    requires com.google.zxing.javase;
 
     opens com.droidgeniuslabs.tooltip to javafx.fxml;
     exports com.droidgeniuslabs.tooltip;

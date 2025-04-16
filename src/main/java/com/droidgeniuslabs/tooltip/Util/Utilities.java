@@ -1,16 +1,29 @@
 package com.droidgeniuslabs.tooltip.Util;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.QRCodeWriter;
+import javafx.scene.control.Label;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.DayOfWeek;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Utilities {
     private final String API_KEY = "acecfc556779dc60b6992973";
     private final String API_URL = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/";
-    public double convertToBytes(double value, String unit) {
+    private BufferedImage qrImage;
+    private Label scanResultLabel;
+
+    public double convertToBytes(double value, @NotNull String unit) {
         switch (unit.toLowerCase()) {
             case "kilobytes":
                 return value * 1024;
@@ -27,7 +40,7 @@ public class Utilities {
                 return value;
         }
     }
-    public double convertFromBytes(double value, String unit) {
+    public double convertFromBytes(double value, @NotNull String unit) {
         switch (unit.toLowerCase()) {
             case "kilobytes":
                 return value / 1024;
@@ -44,7 +57,7 @@ public class Utilities {
                 return value;
         }
     }
-    public int convertToDecimal(String input, String base) {
+    public int convertToDecimal(String input, @NotNull String base) {
         int decimalValue = 0;
 
         switch (base) {
@@ -64,7 +77,7 @@ public class Utilities {
 
         return decimalValue;
     }
-    public String convertFromDecimal(int decimalValue, String base) {
+    public String convertFromDecimal(int decimalValue, @NotNull String base) {
         switch (base) {
             case "Binary":
                 return Integer.toBinaryString(decimalValue);
@@ -78,7 +91,7 @@ public class Utilities {
                 return "Invalid base";
         }
     }
-    public double toCelsius(double temp, String from) {
+    public double toCelsius(double temp, @NotNull String from) {
         return switch (from) {
             case "Celsius" -> temp;
             case "Fahrenheit" -> (temp - 32) * 5 / 9;
@@ -88,7 +101,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit: " + from);
         };
     }
-    public double fromCelsius(double temp, String to) {
+    public double fromCelsius(double temp, @NotNull String to) {
         return switch (to) {
             case "Celsius" -> temp;
             case "Fahrenheit" -> (temp * 9 / 5) + 32;
@@ -98,7 +111,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit: " + to);
         };
     }
-    public double convertToMetersPerSecond(double value, String unit) {
+    public double convertToMetersPerSecond(double value, @NotNull String unit) {
         return switch (unit) {
             case "Meter per second (m/s)" -> value;
             case "Kilometer per hour (km/h)" -> value / 3.6;
@@ -112,7 +125,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit: " + unit);
         };
     }
-    public double convertFromMetersPerSecond(double value, String unit) {
+    public double convertFromMetersPerSecond(double value, @NotNull String unit) {
         return switch (unit) {
             case "Meter per second (m/s)" -> value;
             case "Kilometer per hour (km/h)" -> value * 3.6;
@@ -134,7 +147,7 @@ public class Utilities {
         double finalPrice = initialPrice - discountAmount;
         return finalPrice;
     }
-    public double fromAreaConvert(double value, String unit) {
+    public double fromAreaConvert(double value, @NotNull String unit) {
         return switch (unit) {
             case "Square meter (m²)" -> value;
             case "Square kilometer (km²)" -> value * 1_000_000;
@@ -157,7 +170,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit: " + unit);
         };
     }
-    public double toAreaConvert(double value, String unit) {
+    public double toAreaConvert(double value, @NotNull String unit) {
         return switch (unit) {
             case "Square meter (m²)" -> value;
             case "Square kilometer (km²)" -> value / 1_000_000;
@@ -180,7 +193,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit: " + unit);
         };
     }
-    public double fromTimeConvert(double value, String unit) {
+    public double fromTimeConvert(double value, @NotNull String unit) {
         return switch (unit) {
             case "Picoseconds (ps)" -> value * 0.000000000001;
             case "Microseconds (μs)" -> value * 0.000001;
@@ -194,7 +207,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit: " + unit);
         };
     }
-    public double toTimeConvert(double value, String unit) {
+    public double toTimeConvert(double value, @NotNull String unit) {
         return switch (unit) {
             case "Picoseconds (ps)" -> value / 1e-12;
             case "Microseconds (μs)" -> value / 1e-6;
@@ -208,7 +221,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit: " + unit);
         };
     }
-    public double fromDistanceConvert(double value, String unit) {
+    public double fromDistanceConvert(double value, @NotNull String unit) {
         return switch (unit) {
             case "kilometer (km)" -> value * 1000;
             case "meter (m)" -> value;
@@ -237,7 +250,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit: " + unit);
         };
     }
-    public double toDistanceConvert(double value, String unit) {
+    public double toDistanceConvert(double value, @NotNull String unit) {
         return switch (unit) {
             case "kilometer (km)" -> value / 1000;
             case "meter (m)" -> value;
@@ -266,7 +279,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit: " + unit);
         };
     }
-    public double fromMassConvert(double value, String unit){
+    public double fromMassConvert(double value, @NotNull String unit){
         return switch (unit){
             case "Tonne (t)" -> value * 1000;
             case "Kilogram (kg)" -> value;
@@ -291,7 +304,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit" + unit);
         };
     }
-    public double toMassConvert(double value, String unit){
+    public double toMassConvert(double value, @NotNull String unit){
         return switch (unit){
             case "Tonne (t)" -> value / 1000;
             case "Kilogram (kg)" -> value;
@@ -316,7 +329,7 @@ public class Utilities {
             default -> throw new IllegalArgumentException("Unknown unit" + unit);
         };
     }
-    public double toLiters(String unit, double value) {
+    public double toLiters(@NotNull String unit, double value) {
         switch (unit) {
             case "Cubic meter (m³)": return value * 1000;
             case "Cubic decimeter (dm³)": return value;
@@ -336,8 +349,7 @@ public class Utilities {
             default: return value;
         }
     }
-
-    public double fromLiters(String unit, double value) {
+    public double fromLiters(@NotNull String unit, double value) {
         switch (unit) {
             case "Cubic meter (m³)": return value / 1000;
             case "Cubic decimeter (dm³)": return value;
@@ -375,5 +387,107 @@ public class Utilities {
         JSONObject jsonpObject = new JSONObject(stringBuilder.toString());
         JSONObject rates = jsonpObject.getJSONObject("conversion_rates");
         return rates.getDouble(to);
+    }
+    public double addTax(double amount, double vatRate){
+	return amount * (1 + vatRate / 100);
+    }
+    public double removeTax(double amount, double vatRate) {
+        return amount / (1 + vatRate / 100);
+    }
+    public double calculateGreeceTax(double income) {
+        if (income <= 10000) return income * 0.09;
+        else if (income <= 20000) return 10000 * 0.09 + (income - 10000) * 0.22;
+        else if (income <= 30000) return 10000 * 0.09 + 10000 * 0.22 + (income - 20000) * 0.28;
+        else if (income <= 40000) return 10000 * 0.09 + 10000 * 0.22 + 10000 * 0.28 + (income - 30000) * 0.36;
+        else return 10000 * 0.09 + 10000 * 0.22 + 10000 * 0.28 + 10000 * 0.36 + (income - 40000) * 0.44;
+    }
+    public double calculateTaxCyprus(double income) {
+        if (income <= 19500) return 0;
+        else if (income <= 28000) return (income - 19500) * 0.20;
+        else if (income <= 36300) return 8500 * 0.20 + (income - 28000) * 0.25;
+        else if (income <= 60000) return 8500 * 0.20 + 8300 * 0.25 + (income - 36300) * 0.30;
+        else return 8500 * 0.20 + 8300 * 0.25 + 23700 * 0.30 + (income - 60000) * 0.35;
+    }
+    public double calculateTaxUSA(double income) {
+        if (income <= 11000) return income * 0.10;
+        else if (income <= 44725) return 11000 * 0.10 + (income - 11000) * 0.12;
+        else if (income <= 95375) return 11000 * 0.10 + 33725 * 0.12 + (income - 44725) * 0.22;
+        else return 11000 * 0.10 + 33725 * 0.12 + 50650 * 0.22 + (income - 95375) * 0.24;
+    }
+    public double calculateTaxUK(double income) {
+        double taxFreeAllowance = 12570;
+        if (income <= taxFreeAllowance) return 0;
+        else if (income <= 50270) return (income - taxFreeAllowance) * 0.20;
+        else if (income <= 125140) return (50270 - taxFreeAllowance) * 0.20 + (income - 50270) * 0.40;
+        else return (50270 - taxFreeAllowance) * 0.20 + (125140 - 50270) * 0.40 + (income - 125140) * 0.45;
+    }
+    public double calculateTaxGermany(double income) {
+        if (income <= 10908) return 0;
+        else if (income <= 15999) return (income - 10908) * 0.14;
+        else if (income <= 62809) return (income - 10908) * 0.30;
+        else if (income <= 277825) return (income - 62809) * 0.42 + 51901 * 0.30;
+        else return (income - 277825) * 0.45 + (277825 - 62809) * 0.42 + 51901 * 0.30;
+    }
+    public double convertFuel(double value, @NotNull String from, String to) {
+        double lPer100km = switch (from) {
+            case "L/100km" -> value;
+            case "MPG (UK)" -> 282.5 / value;
+            case "MPG (US)" -> 235.2 / value;
+            default -> throw new IllegalArgumentException();
+        };
+        return switch (to) {
+            case "L/100km" -> lPer100km;
+            case "MPG (UK)" -> 282.5 / lPer100km;
+            case "MPG (US)" -> 235.2 / lPer100km;
+            default -> throw new IllegalArgumentException();
+        };
+    }
+    public double calculateMonthlyPayment(double totalAmount, double time) {
+        return totalAmount/(time * 12);
+    }
+    public double calculateTotalAmount(double principal, double rate, double time){
+        return principal * Math.pow(1 + rate, time);
+    }
+    public double calculatePowerCost(double power, double hours, double rate){
+        double energyCosumed = power*hours/100;
+        double cost = energyCosumed * rate;
+        return cost;
+    }
+    public BufferedImage generateQRImage(String text, int width, int height) throws WriterException {
+        QRCodeWriter writer = new QRCodeWriter();
+        Map<EncodeHintType, Object> hints = new HashMap<>();
+        hints.put(EncodeHintType.CHARACTER_SET, "UTF-8");
+        BitMatrix bitMatrix = writer.encode(text, BarcodeFormat.QR_CODE, width, height, hints);
+        return MatrixToImageWriter.toBufferedImage(bitMatrix);
+    }
+
+    public String getGreekDayName(DayOfWeek day) {
+        return switch (day) {
+            case MONDAY -> "Δευτέρα";
+            case TUESDAY -> "Τρίτη";
+            case WEDNESDAY -> "Τετάρτη";
+            case THURSDAY -> "Πέμπτη";
+            case FRIDAY -> "Παρασκευή";
+            case SATURDAY -> "Σάββατο";
+            case SUNDAY -> "Κυριακή";
+        };
+    }
+
+    public String getGreekMonthName(int month) {
+        return switch (month) {
+            case 1 -> "Ιανουαρίου";
+            case 2 -> "Φεβρουαρίου";
+            case 3 -> "Μαρτίου";
+            case 4 -> "Απριλίου";
+            case 5 -> "Μαΐου";
+            case 6 -> "Ιουνίου";
+            case 7 -> "Ιουλίου";
+            case 8 -> "Αυγούστου";
+            case 9 -> "Σεπτεμβρίου";
+            case 10 -> "Οκτωβρίου";
+            case 11 -> "Νοεμβρίου";
+            case 12 -> "Δεκεμβρίου";
+            default -> "";
+        };
     }
 }

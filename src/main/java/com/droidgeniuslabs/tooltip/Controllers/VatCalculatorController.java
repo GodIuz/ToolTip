@@ -1,5 +1,6 @@
 package com.droidgeniuslabs.tooltip.Controllers;
 
+import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import java.util.Arrays;
@@ -11,9 +12,9 @@ public class VatCalculatorController {
     @FXML public Label resultLabel;
     @FXML public ToggleGroup vatModeToggle;
     private final List<String> vatTypes = Arrays.asList("6","13","24");
-    public RadioButton removeVatRadio;
-    public RadioButton addVatRadio;
-
+    @FXML public RadioButton removeVatRadio;
+    @FXML public RadioButton addVatRadio;
+    public Utilities utilities = new Utilities();
     @FXML
     public void initialize(){
 	vatRateComboBox.getItems().addAll(vatTypes);
@@ -22,24 +23,21 @@ public class VatCalculatorController {
 	addVatRadio.setToggleGroup(vatModeToggle);
 	removeVatRadio.setToggleGroup(vatModeToggle);
     }
-
     public void onCalculate() {
 	try{
 	    double amount = Double.parseDouble(amountField.getText());
 	    double vatRate = Double.parseDouble(vatRateComboBox.getValue().toString());
 	    RadioButton selected = (RadioButton) vatModeToggle.getSelectedToggle();
-
 	    if(selected == null){
 		resultLabel.setText("Choose Vat functionality");
 	    }
-
 	    double result;
 	    assert selected != null;
 	    if (selected.getText().equals("Προσθήκη ΦΠΑ")) {
-		result = amount * (1 + vatRate / 100);
+		result = utilities.addTax(amount,vatRate);
 		resultLabel.setText(String.format("Τελική Τιμή: %.2f €", result));
 	    } else {
-		result = amount / (1 + vatRate / 100);
+		result = utilities.removeTax(amount,vatRate);
 		resultLabel.setText(String.format("Καθαρή Τιμή: %.2f €", result));
 	    }
 

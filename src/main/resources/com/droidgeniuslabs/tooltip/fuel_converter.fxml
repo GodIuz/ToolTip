@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.droidgeniuslabs.tooltip.Controllers.FuelConverter"
+      prefHeight="400.0" prefWidth="600.0">
+    <Label text="Fuel Consumption Converter" style="-fx-font-size: 18px;"/>
+    <HBox spacing="10">
+        <TextField fx:id="inputField" promptText="Enter value"/>
+        <ComboBox fx:id="fromUnit"/>
+        <Label text="→"/>
+        <ComboBox fx:id="toUnit"/>
+    </HBox>
+    <Button text="Convert" onAction="#onConvert"/>
+    <Label fx:id="resultLabel"/>
+</VBox>

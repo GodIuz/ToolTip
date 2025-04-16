@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.droidgeniuslabs.tooltip.Controllers.TimeZoneConverterController"
+      prefHeight="400.0" prefWidth="600.0">
+    <Label text="Time Zone Converter" style="-fx-font-size: 18px;"/>
+
+    <HBox spacing="10">
+        <ComboBox fx:id="fromTimeZone"/>
+        <TextField fx:id="timeInput" promptText="Enter Time (HH:mm)"/>
+        <ComboBox fx:id="toTimeZone"/>
+    </HBox>
+
+    <Button text="Convert Time" onAction="#onConvert"/>
+    <Label fx:id="resultLabel"/>
+</VBox>

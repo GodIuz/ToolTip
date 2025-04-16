@@ -1,5 +1,7 @@
 package com.droidgeniuslabs.tooltip;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,6 +30,8 @@ public class HelloController {
     public Label aboutLabel;
     public Button currencyButton;
     public Button vatButton;
+    public Button incomeVatCalculator;
+
     private void openWindow(String fxmlPath, String title) {
         try {
               FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
@@ -88,5 +92,22 @@ public class HelloController {
         openWindow("currency_converter.fxml", "Currency Converter");
     }
     public void openVatCalculator(){openWindow("vat_calc.fxml", "Vat Calcualtor");}
-
+    @FXML
+    private void onOpenIncomeTaxCalculator() {
+        openWindow("income_tax_calculator.fxml", "Υπολογιστής Φόρου Εισοδήματος");
+    }
+    public void onOpenTimeZoneConverter() {
+        openWindow("timezone_converter.fxml","TimeZone Converter");
+    }
+    public void onOpenUnixTimestampConverter() {
+        openWindow("unix_timestamp_converter.fxml","Unix Timestamp Converter");
+    }
+    public void onOpenFuelConverter(){openWindow("fuel_converter.fxml","Fuel Converter");}
+    public void onOpenAgeCalculator(){openWindow("age_calculator.fxml","Age Calculator");}
+    public void onOpenPowerConsumptionCalculator(){openWindow("power_consumption_calculator.fxml","Power Consumption Calculator");}
+    public void onOpenTextBinaryConverter() {
+        openWindow("text_binary_converter.fxml","Text Binary Converter");
+    }
+    public void onopenBarcodeGenerator(){openWindow("barcode_generator.fxml","Barcode Generator");}
+    public void onOpenCalendar(){openWindow("calendar_calculator.fxml","Calendar Calculator");}
 }

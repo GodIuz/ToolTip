@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.droidgeniuslabs.tooltip.Controllers.LoanCalcualtor"
+      prefHeight="400.0" prefWidth="600.0">
+    <Label text="Interest / Loan Calculator" style="-fx-font-size: 18px;"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="principalInput" promptText="Principal Amount"/>
+        <TextField fx:id="rateInput" promptText="Interest Rate (%)"/>
+        <TextField fx:id="timeInput" promptText="Time (years)"/>
+    </HBox>
+    <Button text="Calculate Loan" onAction="#onCalculateLoan"/>
+    <Label fx:id="resultLabel"/>
+</VBox>

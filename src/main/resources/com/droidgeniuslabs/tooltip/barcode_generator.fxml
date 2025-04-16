@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<VBox xmlns="http://javafx.com/javafx" spacing="10" alignment="CENTER"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.droidgeniuslabs.tooltip.Controllers.BarcodeGeneratorController"
+            prefHeight="400.0" prefWidth="600.0">
+    <TextField fx:id="inputField" promptText="Δώσε URL ή κείμενο" maxWidth="300"/>
+
+    <Button text="Δημιουργία QR" onAction="#onGenerate"/>
+
+    <ImageView fx:id="qrImageView" fitWidth="300" fitHeight="300" preserveRatio="true"/>
+
+    <Button text="Αποθήκευση εικόνας" onAction="#onSave"/>
+</VBox>

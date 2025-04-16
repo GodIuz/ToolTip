@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.droidgeniuslabs.tooltip.Controllers.AgeCalculator"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label text="Υπολογιστής Ηλικίας" style="-fx-font-size: 18px;"/>
+    <TextField fx:id="birthDateInput" promptText="Ημερομηνία Γέννησης (yyyy-MM-dd)"/>
+    <Button text="Υπολογισμός Ηλικίας" onAction="#onCalculateAge"/>
+    <Label fx:id="resultLabel"/>
+</VBox>

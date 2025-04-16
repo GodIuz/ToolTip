@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<VBox spacing="10" alignment="CENTER" xmlns:fx="http://javafx.com/fxml" fx:controller="com.droidgeniuslabs.tooltip.Controllers.UnixTimestampConverterController">
+    <Label text="Unix Timestamp ⇄ Date Converter" style="-fx-font-size: 18px;"/>
+
+    <HBox spacing="10">
+        <TextField fx:id="timestampInput" promptText="Enter Unix Timestamp"/>
+        <Button text="Convert to Date" onAction="#onConvertToDate"/>
+    </HBox>
+
+    <HBox spacing="10">
+        <TextField fx:id="dateInput" promptText="Enter Date (yyyy-MM-dd HH:mm:ss)"/>
+        <Button text="Convert to Unix" onAction="#onConvertToUnix"/>
+    </HBox>
+
+    <Label fx:id="resultLabel"/>
+</VBox>
+
