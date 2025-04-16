@@ -15,7 +15,7 @@ public class TextBinaryConverter {
 	for (char c : text.toCharArray()) {
 	    binary.append(String.format("%8s", Integer.toBinaryString(c)).replace(' ', '0')).append(" ");
 	}
-	resultLabel.setText("Binary: " + binary.toString());
+	resultLabel.setText("Binary: " + binary);
     }
 
     public void onConvertToText() {
@@ -27,6 +27,6 @@ public class TextBinaryConverter {
 		text.append((char) Integer.parseInt(b, 2));
 	    }
 	}
-	resultLabel.setText("Text: " + text.toString());
+	resultLabel.setText("Text: " + text);
     }
 }
