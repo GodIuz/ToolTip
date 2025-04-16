@@ -30,6 +30,8 @@ public class HelloController {
     public Button currencyButton;
     public Button vatButton;
     public Button incomeVatCalculator;
+    public Button calendarButton;
+    public Button calculatorButton;
 
     private void openWindow(String fxmlPath, String title) {
         try {
@@ -110,4 +112,23 @@ public class HelloController {
     public void onopenBarcodeGenerator(){openWindow("barcode_generator.fxml","Barcode Generator");}
     public void onOpenCalendar(){openWindow("calendar_calculator.fxml","Calendar Calculator");}
     public void onOpenCalculator(){openWindow("calculator.fxml","Calculator");}
+    public void onOpenPressureConverter(){
+        openWindow("pressure_converter.fxml","Pressure Converter");
+    }
+    public void onOpenTextCompressorController(){
+        openWindow("text_compresssor.fxml","Text Compressor");
+    }
+    public void onOpenColorPicker(){
+        openWindow("color_picker.fxml","Color Picker");
+    }
+    public void onOpenExtEncryption(){
+        openWindow("ext_encryption.fxml", "Encryption Tool");
+    }
+    public void onOpenUrlShortner(){
+        openWindow("url_shortner.fxml", "URL Shortner");
+    }
+    public void onOpenFileBase64(){
+        openWindow("file_base64","File Base64");
+    }
+    public void onOpenTriviaGame(){openWindow("trivia_game.fxml", "Trivia Game");}
 }

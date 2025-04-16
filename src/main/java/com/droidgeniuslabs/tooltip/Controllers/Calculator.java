@@ -1,5 +1,6 @@
 package com.droidgeniuslabs.tooltip.Controllers;
 
+import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -7,144 +8,95 @@ import javafx.scene.text.Text;
 public class Calculator {
     @FXML
     private TextField inputField;
-
+	@FXML
+	private TextField inputField2;
     @FXML
     private Text resultText;
+	double result = 0;
+	Utilities utilities = new Utilities();
 
     @FXML
     private void handleAddition() {
-	calculate("+");
+        double input = Double.parseDouble(inputField.getText());
+        double input2 = Double.parseDouble(inputField2.getText());
+		result  = utilities.calculate("+",input,input2);
+		resultText.setText("Αποτέλεσμα: " + result);
     }
-
     @FXML
     private void handleSubtraction() {
-	calculate("-");
-    }
 
+        double input = Double.parseDouble(inputField.getText());
+        double input2 = Double.parseDouble(inputField2.getText());
+		result = utilities.calculate("-",input,input2);
+		resultText.setText("Αποτέλεσμα: " + result);
+    }
     @FXML
     private void handleMultiplication() {
-	calculate("*");
+        double input = Double.parseDouble(inputField.getText());
+        double input2 = Double.parseDouble(inputField2.getText());
+		result = utilities.calculate("*",input,input2);
+		resultText.setText("Αποτέλεσμα: " + result);
     }
-
     @FXML
     private void handleDivision() {
-	calculate("/");
+        double input = Double.parseDouble(inputField.getText());
+        double input2 = Double.parseDouble(inputField2.getText());
+		result =  utilities.calculate("/",input,input2);
+		resultText.setText("Αποτέλεσμα: " + result);
     }
-
     @FXML
     private void handleModulus() {
-	calculate("%");
+        double input = Double.parseDouble(inputField.getText());
+        double input2 = Double.parseDouble(inputField2.getText());
+		result = utilities.calculate("%",input,input2);
+		resultText.setText("Αποτελεσμα : " + result);
     }
-
     @FXML
     private void handleLog() {
-	calculate("log");
+        double input = Double.parseDouble(inputField.getText());
+		result = utilities.calcualteAdvnaced("log",input);
+		resultText.setText("Αποτελεσμα : " + result);
     }
-
     @FXML
     private void handleLn() {
-	calculate("ln");
+        double input = Double.parseDouble(inputField.getText());
+		result = utilities.calcualteAdvnaced("ln",input);
+		resultText.setText("Αποτελεσμα : " + result);
     }
-
     @FXML
     private void handlePower() {
-	calculate("power");
+        double input = Double.parseDouble(inputField.getText());
+		result = utilities.calcualteAdvnaced("power",input);
+		resultText.setText("Αποτελεσμα : " + result);
     }
-
     @FXML
     private void handleFactorial() {
-	calculate("factorial");
+        double input = Double.parseDouble(inputField.getText());
+		result = utilities.calcualteAdvnaced("factorial",input);
+		resultText.setText("Αποτελεσμα : " + result);
     }
-
     @FXML
     private void handleSqrt() {
-	calculate("sqrt");
+        double input = Double.parseDouble(inputField.getText());
+		result = utilities.calcualteAdvnaced("sqrt",input);
+		resultText.setText("Αποτελεσμα : " + result);
     }
-
     @FXML
     private void handleSin() {
-	calculateTrig("sin");
+        double input = Double.parseDouble(inputField.getText());
+		result = utilities.calculateTrig("sin",input);
+		resultText.setText("Αποτελεσμα : " + result);
     }
-
     @FXML
     private void handleCos() {
-	calculateTrig("cos");
+        double input = Double.parseDouble(inputField.getText());
+		result = utilities.calculateTrig("cos",input);
+		resultText.setText("Αποτελεσμα : " + result);
     }
-
     @FXML
     private void handleTan() {
-	calculateTrig("tan");
-    }
-
-    private void calculate(String operation) {
-	try {
-	    double input = Double.parseDouble(inputField.getText());
-	    double result = 0;
-
-	    switch (operation) {
-	    case "+":
-		result = input + input;
-		break;
-	    case "-":
-		result = input - input;
-		break;
-	    case "*":
-		result = input * input;
-		break;
-	    case "/":
-		result = input / input;
-		break;
-	    case "%":
-		result = input % input;
-		break;
-	    case "log":
-		result = Math.log10(input);
-		break;
-	    case "ln":
-		result = Math.log(input);
-		break;
-	    case "power":
-		result = Math.pow(input, 2); // Προσαρμογή δύναμης
-		break;
-	    case "factorial":
-		result = factorial(input);
-		break;
-	    case "sqrt":
-		result = Math.sqrt(input);
-		break;
-	    default:
-		resultText.setText("Άγνωστη πράξη!");
-		return;
-	    }
-	    resultText.setText("Αποτέλεσμα: " + result);
-	} catch (Exception e) {
-	    utilities.showError("Σφάλμα στην εισαγωγή!");
-	}
-    }
-
-    private void calculateTrig(String function) {
-	try {
-	    double input = Double.parseDouble(inputField.getText());
-	    double result = 0;
-
-	    switch (function) {
-	    case "sin":
-		result = Math.sin(Math.toRadians(input));
-		break;
-	    case "cos":
-		result = Math.cos(Math.toRadians(input));
-		break;
-	    case "tan":
-		result = Math.tan(Math.toRadians(input));
-		break;
-	    default:
-		resultText.setText("Άγνωστη τριγωνομετρική συνάρτηση!");
-		return;
-	    }
-
-	    resultText.setText(function + " : " + result);
-	} catch (Exception e) {
-	    showError("Σφάλμα στην εισαγωγή!");
-	}
+        double input = Double.parseDouble(inputField.getText());
+		result = utilities.calculateTrig("tan",input);
+		resultText.setText("Αποτελεσμα : " + result);
     }
 }

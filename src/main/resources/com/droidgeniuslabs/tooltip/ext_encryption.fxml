@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" spacing="10" padding="20"
+            xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+            fx:controller="com.droidgeniuslabs.tooltip.Controllers.ExtEncryption"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label text="Encryption / Decryption Tool" style="-fx-font-size: 18; -fx-font-weight: bold;" />
+    <TextArea fx:id="textInput" promptText="Κείμενο προς κρυπτογράφηση..." />
+    <TextField fx:id="keyInput" promptText="Κλειδί (AES/Caesar)" />
+    <HBox spacing="10">
+        <Button text="Encrypt (Caesar)" onAction="#encryptCaesar" />
+        <Button text="Decrypt (Caesar)" onAction="#decryptCaesar" />
+    </HBox>
+    <HBox spacing="10">
+        <Button text="Encrypt (AES)" onAction="#encryptAES" />
+        <Button text="Decrypt (AES)" onAction="#decryptAES" />
+    </HBox>
+    <TextArea fx:id="textOutput" promptText="Αποτέλεσμα..." />
+</VBox>

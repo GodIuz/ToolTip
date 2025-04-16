@@ -1,42 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.control.Button?>
+<VBox xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.droidgeniuslabs.tooltip.HelloController">
+    <VBox spacing="15" style="-fx-background-color: #f8f9fa;">
+        <Label fx:id="aboutLabel" text="About" underline="true" onMouseClicked="#openAboutLink" style="-fx-font-size: 16px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;"/>
 
-<?import javafx.scene.control.Label?>
-<VBox xmlns:fx="http://javafx.com/fxml" spacing="10"
-      fx:controller="com.droidgeniuslabs.tooltip.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
-
-    <Label fx:id="aboutLabel" text="About" underline="true" onMouseClicked="#openAboutLink"/>
-    <VBox alignment="TOP_LEFT" spacing="10">
-        <Button fx:id="areaButton" text="Area Converter" textFill="darkred" onAction="#openAreaConverter"/>
-        <Button fx:id="bmiButton" text="BMI Calc" textFill="darkred" onAction="#openBMICalc"/>
-        <Button fx:id="dataButton" text="Data Converter" textFill="darkred" onAction="#openDataConverter"/>
-        <Button fx:id="currencyButton" text="Currency Converter" textFill="darkred" onAction="#openCurrencyConverter"/>
-        <Button fx:id="discountButton" text="Discount Calc" textFill="darkred" onAction="#openDiscountCalc"/>
-        <Button fx:id="lengthButton" text="Length Converter" textFill="darkred" onAction="#openLengthConverter"/>
-        <Button fx:id="massButton" text="Mass Converter" textFill="darkred" onAction="#openMassConverter"/>
-    </VBox>
-    <VBox spacing="10" alignment="TOP_CENTER">
-        <Button fx:id="numeralSystemButton" text="Numeral System Converter" textFill="darkred" onAction="#openNumeralSystemConverter"/>
-        <Button fx:id="speedButton" text="Speed Converter" textFill="darkred" onAction="#openSpeedConverter"/>
-        <Button fx:id="temperatureButton" text="Temperature Converter" textFill="darkred" onAction="#openTemperatureConverter"/>
-        <Button fx:id="timeButton" text="Time Converter" textFill="darkred" onAction="#openTimeConverter"/>
-        <Button fx:id="volumeButton" text="Volume Converter" textFill="darkred" onAction="#openVolumeConverter"/>
-        <Button fx:id="vatButton" text="Vat Calculator" textFill="darkred" onAction="#openVatCalculator"/>
-        <Button fx:id="incomeVatCalculator" text="Income Vat Calculator" textFill="darkred" onAction="#onOpenIncomeTaxCalculator"/>
-    </VBox>
-    <VBox alignment="TOP_RIGHT" spacing="10">
-        <Button fx:id="timeZoneConverter" text="TimeZone Converter" textFill="darkred" onAction="#onOpenTimeZoneConverter"/>
-        <Button fx:id="unixTimestampButton" text="Unix TimeStamp Converter" textFill="darkred" onAction="#onOpenUnixTimestampConverter"/>
-        <Button fx:id="fuelButton" text="Fuel Converter" textFill="darkred" onAction="#onOpenFuelConverter"/>
-        <Button fx:id="ageButton" text="Age Calculator" textFill="darkred" onAction="#onOpenAgeCalculator"/>
-        <Button fx:id="powerConsumptionButton" text="Power Consumption Calculator" textFill="darkred" onAction="#onOpenPowerConsumptionCalculator"/>
-        <Button fx:id="textBinaryButton" text="Text Binary Converter" textFill="darkred" onAction="#onOpenTextBinaryConverter"/>
-        <Button fx:id="barcodeButton" text="Barcode Generator" textFill="darkred" onAction="#onopenBarcodeGenerator"/>
+        <TitledPane text="Converters" expanded="false">
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Button fx:id="areaButton" text="Area Converter" onAction="#openAreaConverter" />
+                <Button fx:id="dataButton" text="Data Converter" onAction="#openDataConverter" />
+                <Button fx:id="currencyButton" text="Currency Converter" onAction="#openCurrencyConverter" />
+                <Button fx:id="lengthButton" text="Length Converter" onAction="#openLengthConverter" />
+                <Button fx:id="massButton" text="Mass Converter" onAction="#openMassConverter" />
+                <Button fx:id="speedButton" text="Speed Converter" onAction="#openSpeedConverter" />
+                <Button fx:id="temperatureButton" text="Temperature Converter" onAction="#openTemperatureConverter" />
+                <Button fx:id="timeButton" text="Time Converter" onAction="#openTimeConverter" />
+                <Button fx:id="volumeButton" text="Volume Converter" onAction="#openVolumeConverter" />
+                <Button fx:id="pressureButton" text="Pressure Converter" onAction="#onOpenPressureConverter" />
+                <Button fx:id="fuelButton" text="Fuel Converter" onAction="#onOpenFuelConverter" />
+                <Button fx:id="numeralSystemButton" text="Numeral System Converter" onAction="#openNumeralSystemConverter" />
+            </VBox>
+        </TitledPane>
+        <TitledPane text="Calculators &amp; Utilities" expanded="false">
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Button fx:id="bmiButton" text="BMI Calculator" onAction="#openBMICalc" />
+                <Button fx:id="discountButton" text="Discount Calculator" onAction="#openDiscountCalc" />
+                <Button fx:id="vatButton" text="VAT Calculator" onAction="#openVatCalculator" />
+                <Button fx:id="incomeVatCalculator" text="Income Tax Calculator" onAction="#onOpenIncomeTaxCalculator" />
+                <Button fx:id="calcButton" text="Math Calculator" onAction="#onOpenCalculator" />
+                <Button fx:id="calendarButton" text="Calendar Calculator" onAction="#onOpenCalendar" />
+                <Button fx:id="ageButton" text="Age Calculator" onAction="#onOpenAgeCalculator" />
+                <Button fx:id="powerConsumptionButton" text="Power Consumption Calculator" onAction="#onOpenPowerConsumptionCalculator" />
+            </VBox>
+        </TitledPane>
+        <TitledPane text="Tools" expanded="false">
+            <VBox spacing="10">
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Button fx:id="textBinaryButton" text="Text-Binary Converter" onAction="#onOpenTextBinaryConverter" />
+                <Button fx:id="barcodeButton" text="Barcode Generator" onAction="#onopenBarcodeGenerator" />
+                <Button fx:id="textCompressorButton" text="Text Compressor/Decompressor" onAction="#onOpenTextCompressorController" />
+                <Button fx:id="file64Button" text="File to Base64 Converter" onAction="#onOpenFileBase64" />
+                <Button fx:id="urlShortenerButton" text="URL Shortener" onAction="#onOpenUrlShortner" />
+                <Button fx:id="extEncryptionButton" text="Encryption / Decryption Tool" onAction="#onOpenExtEncryption" />
+                <Button fx:id="colorPickerButton" text="Color Picker" onAction="#onOpenColorPicker" />
+                <Button fx:id="timeZoneConverter" text="TimeZone Converter" onAction="#onOpenTimeZoneConverter" />
+                <Button fx:id="unixTimestampButton" text="Unix Timestamp Converter" onAction="#onOpenUnixTimestampConverter" />
+            </VBox>
+        </TitledPane>
+        <TitledPane text="Games" expanded="false">
+            <VBox spacing="10" >
+                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>
+                <Button fx:id="triviaGameButton" text="Trivia Game" onAction="#onOpenTriviaGame" />
+            </VBox>
+        </TitledPane>
     </VBox>
 </VBox>

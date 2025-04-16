@@ -6,7 +6,14 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.Clipboard;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import java.awt.image.BufferedImage;
@@ -22,6 +29,13 @@ public class Utilities {
     private final String API_URL = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/";
     private BufferedImage qrImage;
     private Label scanResultLabel;
+    private final double PA = 1.0;
+    private final double BAR = 100000.0;
+    private final double ATM = 101325.0;
+    private final double PSI = 6894.76;
+    private ColorPicker colorPicker;
+    private Pane colorPane;
+    private TextField hexField;
 
     public double convertToBytes(double value, @NotNull String unit) {
         switch (unit.toLowerCase()) {
@@ -460,7 +474,7 @@ public class Utilities {
         BitMatrix bitMatrix = writer.encode(text, BarcodeFormat.QR_CODE, width, height, hints);
         return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }
-    public String getGreekDayName(DayOfWeek day) {
+    public String getGreekDayName(@NotNull DayOfWeek day) {
         return switch (day) {
             case MONDAY -> "Δευτέρα";
             case TUESDAY -> "Τρίτη";
@@ -491,5 +505,119 @@ public class Utilities {
     public double factorial(double n) {
         if (n == 0) return 1;
         return n * factorial(n - 1);
+    }
+    public double calcualteAdvnaced(@NotNull String operation, double input){
+        double result = 0;
+        switch(operation) {
+            case "log":
+                result = Math.log10(input);
+                break;
+            case "ln":
+                result = Math.log(input);
+                break;
+            case "power":
+                result = Math.pow(input, 2); // Προσαρμογή δύναμης
+                break;
+            case "factorial":
+                result = factorial(input);
+                break;
+            case "sqrt":
+                result = Math.sqrt(input);
+                break;
+        }
+
+        return result;
+    }
+    public double calculate(String operation, double input, double input2) {
+        double result = 0;
+        try {
+            switch (operation) {
+                case "+":
+                    result = input + input2;
+                    break;
+                case "-":
+                    result = input - input2;
+                    break;
+                case "*":
+                    result = input * input2;
+                    break;
+                case "/":
+                    if (input2 != 0) {
+                        result = input / input2;
+                    }
+                    break;
+                case "%":
+                    result = input % input2;
+                    break;
+            }
+
+        } catch (Exception e) {
+            showError();
+        }
+        return result;
+    }
+    public double calculateTrig(String function, double input) {
+        double result = 0;
+        try {
+            switch (function) {
+                case "sin":
+                    result = Math.sin(Math.toRadians(input));
+                    break;
+                case "cos":
+                    result = Math.cos(Math.toRadians(input));
+                    break;
+                case "tan":
+                    result = Math.tan(Math.toRadians(input));
+                    break;
+                default:
+                    return result;
+            }
+        } catch (Exception e) {
+            showError();
+        }
+        return result;
+    }
+    public void showError() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Σφάλμα");
+        alert.setHeaderText(null);
+        alert.setContentText("Σφάλμα στην εισαγωγή!");
+        alert.showAndWait();
+    }
+    public double convertToPa(double value, String unit) {
+        return switch (unit) {
+            case "Bar" -> value * BAR;
+            case "Atm" -> value * ATM;
+            case "Psi" -> value * PSI;
+            default -> value;
+        };
+    }
+    public double convertFromPa(double pa, String unit) {
+        return switch (unit) {
+            case "Bar" -> pa / BAR;
+            case "Atm" -> pa / ATM;
+            case "Psi" -> pa / PSI;
+            default -> pa;
+        };
+    }
+    public void updateColor() {
+        Color color = colorPicker.getValue();
+        String hex = toHexString(color);
+        colorPane.setStyle("-fx-background-color: " + hex + ";");
+        hexField.setText(hex);
+    }
+    private String toHexString(Color color) {
+        int r = (int) (color.getRed() * 255);
+        int g = (int) (color.getGreen() * 255);
+        int b = (int) (color.getBlue() * 255);
+        return String.format("#%02X%02X%02X", r, g, b);
+    }
+    public void copyToClipboard() {
+        String hex = hexField.getText();
+        if (hex != null && !hex.isEmpty()) {
+            ClipboardContent content = new ClipboardContent();
+            content.putString(hex);
+            Clipboard.getSystemClipboard().setContent(content);
+        }
     }
 }

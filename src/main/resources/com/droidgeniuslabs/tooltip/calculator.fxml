@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
 <?import javafx.scene.layout.*?>
-
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.text.Text?>
+
 <VBox xmlns="http://javafx.com/javafx" alignment="CENTER" spacing="10"
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.droidgeniuslabs.tooltip.Controllers.Calculator"
       prefHeight="400.0" prefWidth="600.0">
-    <TextField fx:id="inputField" promptText="Εισάγετε μια αριθμητική έκφραση"  />
-    <Button text="+" onAction="#handleAddition" GridPane.rowIndex="1" GridPane.columnIndex="0" />
-    <Button text="-" onAction="#handleSubtraction" GridPane.rowIndex="1" GridPane.columnIndex="1" />
-    <Button text="*" onAction="#handleMultiplication" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+    <TextField fx:id="inputField" promptText="Inset one number"/>
 
-    <Button text="/" onAction="#handleDivision" GridPane.rowIndex="2" GridPane.columnIndex="0" />
-    <Button text="%" onAction="#handleModulus" GridPane.rowIndex="2" GridPane.columnIndex="1" />
-    <Button text="log" onAction="#handleLog" GridPane.rowIndex="2" GridPane.columnIndex="2" />
-
-    <Button text="ln" onAction="#handleLn" GridPane.rowIndex="3" GridPane.columnIndex="0" />
-    <Button text="x^y" onAction="#handlePower" GridPane.rowIndex="3" GridPane.columnIndex="1" />
-    <Button text="n!" onAction="#handleFactorial" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+    <Button text="+" onAction="#handleAddition"/>
+    <Button text="-" onAction="#handleSubtraction"/>
+    <Button text="*" onAction="#handleMultiplication"/>
+    <Button text="/" onAction="#handleDivision"/>
+    <Button text="MOD" onAction="#handleModulus"/>
+    <Button text="DIV" />
+    <Button text="log" onAction="#handleLog"/>
+    <Button text="ln" onAction="#handleLn"/>
+    <Button text="x^y" onAction="#handlePower"/>
+    <Button text="n!" onAction="#handleFactorial"/>
     <Button text="√" onAction="#handleSqrt"/>
     <Button text="sin" onAction="#handleSin"/>
     <Button text="cos" onAction="#handleCos"/>
-
     <Button text="tan" onAction="#handleTan"/>
 
+    <TextField fx:id="inputField2" promptText="Insert second number"/>
     <Text fx:id="resultText" />
 </VBox>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" spacing="10" padding="20"
+            xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+            fx:controller="com.droidgeniuslabs.tooltip.Controllers.FileBase64"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label text="File to Base64 Converter" style="-fx-font-size: 18; -fx-font-weight: bold;" />
+    <Button text="Επιλογή Αρχείου" onAction="#chooseFile" />
+    <Label fx:id="fileNameLabel" text="Κανένα αρχείο επιλεγμένο" />
+    <TextArea fx:id="base64Output" promptText="Base64 Output..." wrapText="true" prefRowCount="6" />
+    <Button text="Αντιγραφή" onAction="#copyBase64" />
+</VBox>

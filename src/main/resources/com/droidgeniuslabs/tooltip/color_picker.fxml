@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.Rectangle?>
+<VBox xmlns="http://javafx.com/javafx" spacing="10" padding="20"
+            xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+            fx:controller="com.droidgeniuslabs.tooltip.Controllers.ColorPicker"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label text="Color Picker Tool" style="-fx-font-size: 18; -fx-font-weight: bold;" />
+    <ColorPicker fx:id="colorPicker" />
+    <Rectangle fx:id="colorDisplay" width="100" height="100" />
+    <Label fx:id="hexCode" />
+</VBox>
