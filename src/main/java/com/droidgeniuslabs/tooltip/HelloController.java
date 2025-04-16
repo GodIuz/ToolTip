@@ -109,4 +109,5 @@ public class HelloController {
     }
     public void onopenBarcodeGenerator(){openWindow("barcode_generator.fxml","Barcode Generator");}
     public void onOpenCalendar(){openWindow("calendar_calculator.fxml","Calendar Calculator");}
+    public void onOpenCalculator(){openWindow("calculator.fxml","Calculator");}
 }

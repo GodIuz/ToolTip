@@ -460,7 +460,6 @@ public class Utilities {
         BitMatrix bitMatrix = writer.encode(text, BarcodeFormat.QR_CODE, width, height, hints);
         return MatrixToImageWriter.toBufferedImage(bitMatrix);
     }
-
     public String getGreekDayName(DayOfWeek day) {
         return switch (day) {
             case MONDAY -> "Δευτέρα";
@@ -472,7 +471,6 @@ public class Utilities {
             case SUNDAY -> "Κυριακή";
         };
     }
-
     public String getGreekMonthName(int month) {
         return switch (month) {
             case 1 -> "Ιανουαρίου";
@@ -489,5 +487,9 @@ public class Utilities {
             case 12 -> "Δεκεμβρίου";
             default -> "";
         };
+    }
+    public double factorial(double n) {
+        if (n == 0) return 1;
+        return n * factorial(n - 1);
     }
 }
