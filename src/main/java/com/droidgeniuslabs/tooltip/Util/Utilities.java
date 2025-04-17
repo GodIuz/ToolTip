@@ -26,8 +26,6 @@ import java.time.DayOfWeek;
 import java.util.HashMap;
 import java.util.Map;
 
-import static eu.hansolo.toolboxfx.HelperFX.colorToRGBA;
-
 public class Utilities {
     private final String API_KEY = "acecfc556779dc60b6992973";
     private final String API_URL = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/";
