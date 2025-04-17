@@ -41,6 +41,7 @@
                 <Button fx:id="calendarButton" text="Calendar Calculator" onAction="#onOpenCalendar" />
                 <Button fx:id="ageButton" text="Age Calculator" onAction="#onOpenAgeCalculator" />
                 <Button fx:id="powerConsumptionButton" text="Power Consumption Calculator" onAction="#onOpenPowerConsumptionCalculator" />
+                <Button fx:id="dateButton" text="Date Calculator" onAction="#onOpenDateCalculator"/>
             </VBox>
         </TitledPane>
         <TitledPane text="Tools" expanded="false">
@@ -68,4 +69,5 @@
             </VBox>
         </TitledPane>
     </VBox>
+    <Button text="%change_language" onAction="#onChangeLanguage" />
 </VBox>

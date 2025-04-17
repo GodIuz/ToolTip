@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx" spacing="10"
+            xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+            fx:controller="com.droidgeniuslabs.tooltip.Controllers.InterestCalculator"
+            prefHeight="400.0" prefWidth="600.0">
+    <Label text="Υπολογιστής Τόκου" style="-fx-font-size: 18; -fx-font-weight: bold;" />
+
+    <TextField fx:id="principalField" promptText="Κεφάλαιο (€)" />
+    <TextField fx:id="rateField" promptText="Επιτόκιο (%)" />
+    <TextField fx:id="timeField" promptText="Χρόνος (σε έτη)" />
+
+    <Button text="Υπολόγισε Απλό Τόκο" onAction="#calculateSimpleInterest" />
+    <Label fx:id="simpleInterestResult" text="Απλός Τόκος: " />
+
+    <TextField fx:id="compoundFrequencyField" promptText="Συχνότητα Σύνθεσης (ανά έτος)" />
+    <Button text="Υπολόγισε Σύνθετο Τόκο" onAction="#calculateCompoundInterest" />
+    <Label fx:id="compoundInterestResult" text="Σύνθετος Τόκος: " />
+e</VBox>

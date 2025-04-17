@@ -7,10 +7,7 @@ import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import javafx.animation.PauseTransition;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.Pane;
@@ -23,6 +20,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +38,9 @@ public class Utilities {
     private Pane colorPane;
     private TextField hexField;
     private TextField rgbField;
+    private TextField daysInputField;
+    private DatePicker baseDatePicker;
+    private Label resultDateLabel;
 
 
     public double convertToBytes(double value, @NotNull String unit) {
@@ -654,5 +655,25 @@ public class Utilities {
         PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
         pause.setOnFinished(e -> copiedLabel.setVisible(false));
         pause.play();
+    }
+    public double calculateSimpleInterest(double P, double R, double T) {
+        return (P * R * T) / 100.0;
+    }
+    public double calculateCompoundInterest(double P,double R, double n, double T) {
+        double amount = P * Math.pow(1 + R / n, n * T);
+        double interest = amount - P;
+        return interest;
+    }
+    public void handleAddSubtract(boolean isAdd) {
+        LocalDate base = baseDatePicker.getValue();
+        try {
+            int days = Integer.parseInt(daysInputField.getText());
+            if (base != null) {
+                LocalDate result = isAdd ? base.plusDays(days) : base.minusDays(days);
+                resultDateLabel.setText("Αποτέλεσμα: " + result);
+            }
+        } catch (NumberFormatException e) {
+            resultDateLabel.setText("Μη έγκυρος αριθμός ημερών.");
+        }
     }
 }
