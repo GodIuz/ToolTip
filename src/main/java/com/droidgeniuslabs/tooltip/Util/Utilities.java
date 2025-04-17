@@ -6,6 +6,7 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
+import javafx.animation.PauseTransition;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
@@ -14,6 +15,7 @@ import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.util.Duration;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import java.awt.image.BufferedImage;
@@ -24,11 +26,14 @@ import java.time.DayOfWeek;
 import java.util.HashMap;
 import java.util.Map;
 
+import static eu.hansolo.toolboxfx.HelperFX.colorToRGBA;
+
 public class Utilities {
     private final String API_KEY = "acecfc556779dc60b6992973";
     private final String API_URL = "https://v6.exchangerate-api.com/v6/" + API_KEY + "/latest/";
     private BufferedImage qrImage;
     private Label scanResultLabel;
+    private Label copiedLabel;
     private final double PA = 1.0;
     private final double BAR = 100000.0;
     private final double ATM = 101325.0;
@@ -36,6 +41,8 @@ public class Utilities {
     private ColorPicker colorPicker;
     private Pane colorPane;
     private TextField hexField;
+    private TextField rgbField;
+
 
     public double convertToBytes(double value, @NotNull String unit) {
         switch (unit.toLowerCase()) {
@@ -584,7 +591,7 @@ public class Utilities {
         alert.setContentText("Σφάλμα στην εισαγωγή!");
         alert.showAndWait();
     }
-    public double convertToPa(double value, String unit) {
+    public double convertToPa(double value, @NotNull String unit) {
         return switch (unit) {
             case "Bar" -> value * BAR;
             case "Atm" -> value * ATM;
@@ -592,7 +599,7 @@ public class Utilities {
             default -> value;
         };
     }
-    public double convertFromPa(double pa, String unit) {
+    public double convertFromPa(double pa, @NotNull String unit) {
         return switch (unit) {
             case "Bar" -> pa / BAR;
             case "Atm" -> pa / ATM;
@@ -600,30 +607,54 @@ public class Utilities {
             default -> pa;
         };
     }
-    public void updateColor() {
-        Color color = colorPicker.getValue();
-        String hex = toHexString(color);
-        colorPane.setStyle("-fx-background-color: " + hex + ";");
+    public void updateColor(Color color, @NotNull TextField hexField, @NotNull TextField rgbField, @NotNull TextField rgbaField, @NotNull Pane colorPane) {
+        String hex = colorToHex(color);
+        String rgb = colorToRGB(color);
+        String rgba = colorToRGBA(color);
         hexField.setText(hex);
+        rgbField.setText(rgb);
+        rgbaField.setText(rgba);
+        colorPane.setStyle("-fx-background-color: " + hex + ";");
     }
-    private String toHexString(Color color) {
-        int r = (int) (color.getRed() * 255);
-        int g = (int) (color.getGreen() * 255);
-        int b = (int) (color.getBlue() * 255);
-        return String.format("#%02X%02X%02X", r, g, b);
+    public static void copyToClipboard(String text) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(text);
+        clipboard.setContent(content);
     }
-    public void copyToClipboard() {
-        String hex = hexField.getText();
-        if (hex != null && !hex.isEmpty()) {
-            ClipboardContent content = new ClipboardContent();
-            content.putString(hex);
-            Clipboard.getSystemClipboard().setContent(content);
-        }
-    }
-    public String colorToHex(Color color) {
+    @NotNull
+    public static String colorToHex(@NotNull Color color) {
         return String.format("#%02X%02X%02X",
                         (int)(color.getRed() * 255),
                         (int)(color.getGreen() * 255),
                         (int)(color.getBlue() * 255));
+    }
+    @NotNull
+    public static String colorToRGB(@NotNull Color color) {
+        return String.format("rgb(%d, %d, %d)",
+                        (int)(color.getRed() * 255),
+                        (int)(color.getGreen() * 255),
+                        (int)(color.getBlue() * 255));
+    }
+    @NotNull
+    public static String colorToRGBA(@NotNull Color color) {
+        return String.format("rgba(%d, %d, %d, %.2f)",
+                        (int)(color.getRed() * 255),
+                        (int)(color.getGreen() * 255),
+                        (int)(color.getBlue() * 255),
+                        color.getOpacity());
+    }
+    public static void copyAll(String hex, String rgb, String rgba) {
+        String fullText = "HEX: " + hex + "\nRGB: " + rgb + "\nRGBA: " + rgba;
+        copyToClipboard(fullText);
+    }
+    public void toggleDarkMode(@NotNull Pane colorPane, boolean isDarkMode ) {
+        colorPane.setStyle("-fx-background-color: " + (isDarkMode ? "#333333" : "#FFFFFF") + ";");
+    }
+    public void showCopiedLabel() {
+        copiedLabel.setVisible(true);
+        PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
+        pause.setOnFinished(e -> copiedLabel.setVisible(false));
+        pause.play();
     }
 }

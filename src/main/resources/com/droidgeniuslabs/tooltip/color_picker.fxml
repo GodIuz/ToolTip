@@ -2,14 +2,41 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 <VBox xmlns="http://javafx.com/javafx" spacing="10"
-            xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
-            fx:controller="com.droidgeniuslabs.tooltip.Controllers.ColorPickerController"
-            prefHeight="400.0" prefWidth="600.0">
+      xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
+      fx:controller="com.droidgeniuslabs.tooltip.Controllers.ColorPickerController"
+      prefHeight="500.0" prefWidth="600.0">
+
     <Label text="Color Picker Tool" style="-fx-font-size: 18; -fx-font-weight: bold;" />
-    <ColorPicker fx:id="colorPicker" />
-    <TextField fx:id="hexField"/>
-    <Label fx:id="hexCode" />
-    <Pane fx:id="colorPane"/>
-    <Button fx:id="copyButton" text="Copy"/>
+
+    <ColorPicker fx:id="colorPicker" prefHeight="200" prefWidth="200"/>
+
+    <HBox spacing="10">
+        <VBox spacing="5">
+            <Label text="HEX:" />
+            <TextField fx:id="hexField" editable="false" />
+            <Button fx:id="copyHexButton" text="Copy HEX" />
+        </VBox>
+        <VBox spacing="5">
+            <Label text="RGB:" />
+            <TextField fx:id="rgbField" editable="false" />
+            <Button fx:id="copyRgbButton" text="Copy RGB" />
+        </VBox>
+        <VBox spacing="5">
+            <Label text="RGBA:" />
+            <TextField fx:id="rgbaField" editable="false" />
+            <Button fx:id="copyRgbaButton" text="Copy RGBA" />
+        </VBox>
+    </HBox>
+
+    <Button fx:id="copyAllButton" text="Copy All" />
+    <Label fx:id="copiedLabel" text="Copied!" visible="false" style="-fx-text-fill: green;" />
+
+    <VBox spacing="10">
+        <Label text="Color History:" />
+        <ListView fx:id="colorHistoryList" prefWidth="200" />
+    </VBox>
+
+    <Pane fx:id="colorPane" prefWidth="200" prefHeight="100" style="-fx-background-color: #FFFFFF;" />
 </VBox>
