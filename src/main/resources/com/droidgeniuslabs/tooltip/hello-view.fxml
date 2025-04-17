@@ -69,5 +69,4 @@
             </VBox>
         </TitledPane>
     </VBox>
-    <Button text="%change_language" onAction="#onChangeLanguage" />
 </VBox>
