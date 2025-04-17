@@ -9,6 +9,7 @@ public class TriviaGame {
     @FXML private Label questionLabel;
     @FXML private RadioButton optionA, optionB, optionC, optionD;
     @FXML private Label resultLabel;
+    @FXML
     private final ToggleGroup optionsGroup = new ToggleGroup();
 
     private int currentIndex = 0;

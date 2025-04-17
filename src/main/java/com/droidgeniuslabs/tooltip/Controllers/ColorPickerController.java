@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
-
+import javafx.scene.paint.Color;
 
 public class ColorPickerController {
     @FXML private ColorPicker colorPicker;
@@ -17,7 +17,12 @@ public class ColorPickerController {
 
     @FXML
     public void initialize() {
-        colorPicker.setOnAction(event -> utilities.updateColor());
+        colorPicker.setOnAction(event -> {
+            Color selectedColor = colorPicker.getValue();
+            String hex = utilities.colorToHex(selectedColor);
+            hexField.setText(hex);
+            colorPane.setStyle("-fx-background-color: " + hex + ";");
+        });
         copyButton.setOnAction(event -> utilities.copyToClipboard());
     }
 

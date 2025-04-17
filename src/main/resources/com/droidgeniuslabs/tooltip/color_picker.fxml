@@ -2,13 +2,14 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.Rectangle?>
-<VBox xmlns="http://javafx.com/javafx" spacing="10" padding="20"
+<VBox xmlns="http://javafx.com/javafx" spacing="10"
             xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
             fx:controller="com.droidgeniuslabs.tooltip.Controllers.ColorPickerController"
             prefHeight="400.0" prefWidth="600.0">
     <Label text="Color Picker Tool" style="-fx-font-size: 18; -fx-font-weight: bold;" />
     <ColorPicker fx:id="colorPicker" />
-    <Rectangle fx:id="colorDisplay" width="100" height="100" />
+    <TextField fx:id="hexField"/>
     <Label fx:id="hexCode" />
+    <Pane fx:id="colorPane"/>
+    <Button fx:id="copyButton" text="Copy"/>
 </VBox>

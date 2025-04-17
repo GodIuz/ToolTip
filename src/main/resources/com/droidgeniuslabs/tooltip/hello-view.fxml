@@ -37,7 +37,7 @@
                 <Button fx:id="discountButton" text="Discount Calculator" onAction="#openDiscountCalc" />
                 <Button fx:id="vatButton" text="VAT Calculator" onAction="#openVatCalculator" />
                 <Button fx:id="incomeVatCalculator" text="Income Tax Calculator" onAction="#onOpenIncomeTaxCalculator" />
-                <Button fx:id="calcButton" text="Math Calculator" onAction="#onOpenCalculator" />
+                <Button fx:id="calcButton" text="Calculator" onAction="#onOpenCalculator" />
                 <Button fx:id="calendarButton" text="Calendar Calculator" onAction="#onOpenCalendar" />
                 <Button fx:id="ageButton" text="Age Calculator" onAction="#onOpenAgeCalculator" />
                 <Button fx:id="powerConsumptionButton" text="Power Consumption Calculator" onAction="#onOpenPowerConsumptionCalculator" />

@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx" spacing="10" padding="20"
+<VBox xmlns="http://javafx.com/javafx" spacing="10"
             xmlns:fx="http://javafx.com/fxml" alignment="CENTER"
             fx:controller="com.droidgeniuslabs.tooltip.Controllers.FileBase64"
             prefHeight="400.0" prefWidth="600.0">

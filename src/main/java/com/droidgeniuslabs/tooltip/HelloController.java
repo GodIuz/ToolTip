@@ -128,7 +128,7 @@ public class HelloController {
         openWindow("url_shortner.fxml", "URL Shortner");
     }
     public void onOpenFileBase64(){
-        openWindow("file_base64","File Base64");
+        openWindow("file_base64.fxml","File Base64");
     }
     public void onOpenTriviaGame(){openWindow("trivia_game.fxml", "Trivia Game");}
 }
