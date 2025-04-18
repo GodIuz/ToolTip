@@ -1,0 +1,102 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "options": ["Paris", "Berlin", "Madrid", "Rome"],
+    "correctAnswer": "Paris"
+  },
+  {
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Earth", "Mars", "Jupiter", "Saturn"],
+    "correctAnswer": "Mars"
+  },
+  {
+    "question": "Who wrote 'Romeo and Juliet'?",
+    "options": ["William Shakespeare", "Mark Twain", "Jane Austen", "Charles Dickens"],
+    "correctAnswer": "William Shakespeare"
+  },
+  {
+    "question": "Which element has the chemical symbol 'O'?",
+    "options": ["Oxygen", "Gold", "Osmium", "Oganesson"],
+    "correctAnswer": "Oxygen"
+  },
+  {
+    "question": "How many continents are there?",
+    "options": ["5", "6", "7", "8"],
+    "correctAnswer": "7"
+  },
+  {
+    "question": "Which ocean is the largest?",
+    "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+    "correctAnswer": "Pacific Ocean"
+  },
+  {
+    "question": "In which year did the Titanic sink?",
+    "options": ["1912", "1905", "1923", "1898"],
+    "correctAnswer": "1912"
+  },
+  {
+    "question": "Which language is the most spoken worldwide?",
+    "options": ["English", "Mandarin Chinese", "Spanish", "Hindi"],
+    "correctAnswer": "Mandarin Chinese"
+  },
+  {
+    "question": "How many players are there in a football (soccer) team?",
+    "options": ["9", "10", "11", "12"],
+    "correctAnswer": "11"
+  },
+  {
+    "question": "What is the hardest natural substance on Earth?",
+    "options": ["Gold", "Iron", "Diamond", "Quartz"],
+    "correctAnswer": "Diamond"
+  },
+  {
+    "question": "What is the boiling point of water at sea level?",
+    "options": ["90°C", "95°C", "100°C", "105°C"],
+    "correctAnswer": "100°C"
+  },
+  {
+    "question": "What currency is used in Japan?",
+    "options": ["Yuan", "Won", "Yen", "Dollar"],
+    "correctAnswer": "Yen"
+  },
+  {
+    "question": "Which organ purifies our blood?",
+    "options": ["Heart", "Lungs", "Liver", "Kidneys"],
+    "correctAnswer": "Kidneys"
+  },
+  {
+    "question": "Which country invented tea?",
+    "options": ["India", "England", "China", "Japan"],
+    "correctAnswer": "China"
+  },
+  {
+    "question": "What is the chemical formula for water?",
+    "options": ["H2O", "CO2", "O2", "H2SO4"],
+    "correctAnswer": "H2O"
+  },
+  {
+    "question": "Who painted the Mona Lisa?",
+    "options": ["Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo"],
+    "correctAnswer": "Leonardo da Vinci"
+  },
+  {
+    "question": "Which is the longest river in the world?",
+    "options": ["Amazon", "Nile", "Yangtze", "Mississippi"],
+    "correctAnswer": "Nile"
+  },
+  {
+    "question": "What is the main ingredient in sushi?",
+    "options": ["Fish", "Rice", "Seaweed", "Soy Sauce"],
+    "correctAnswer": "Rice"
+  },
+  {
+    "question": "Which planet has the most moons?",
+    "options": ["Earth", "Mars", "Jupiter", "Saturn"],
+    "correctAnswer": "Saturn"
+  },
+  {
+    "question": "How many bones are there in the adult human body?",
+    "options": ["206", "201", "208", "210"],
+    "correctAnswer": "206"
+  }
+]

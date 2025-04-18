@@ -1,68 +1,56 @@
 package com.droidgeniuslabs.tooltip.Controllers;
 
+import com.droidgeniuslabs.tooltip.Model.Question;
+import com.droidgeniuslabs.tooltip.Util.Utilities;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
+import java.net.URL;
 import java.util.*;
 
-
-public class TriviaGame {
+public class TriviaGame implements Initializable {
     @FXML private Label questionLabel;
-    @FXML private RadioButton optionA, optionB, optionC, optionD;
-    @FXML private Label resultLabel;
-    @FXML
-    private final ToggleGroup optionsGroup = new ToggleGroup();
+    @FXML private VBox answersBox;
+    @FXML private Label scoreLabel;
+    private List<Question> questions;
+    private final int currentQuestion = 0;
+    private final int score = 0;
+    private final Utilities utilities = new Utilities();
 
-    private int currentIndex = 0;
-    private final List<Question> questions = List.of(
-            new Question("What is the capital of France?", "Paris", List.of("Paris", "Rome", "Berlin", "Madrid")),
-            new Question("2 + 2 = ?", "4", List.of("3", "4", "5", "6"))
-    );
-
-    @FXML
-    public void initialize() {
-        optionA.setToggleGroup(optionsGroup);
-        optionB.setToggleGroup(optionsGroup);
-        optionC.setToggleGroup(optionsGroup);
-        optionD.setToggleGroup(optionsGroup);
-        loadQuestion();
-    }
-
-    private void loadQuestion() {
-        Question q = questions.get(currentIndex);
-        questionLabel.setText(q.getText());
-        List<String> opts = q.getOptions();
-        optionA.setText(opts.get(0));
-        optionB.setText(opts.get(1));
-        optionC.setText(opts.get(2));
-        optionD.setText(opts.get(3));
-        optionsGroup.selectToggle(null);
-        resultLabel.setText("");
-    }
-
-    @FXML
-    public void nextQuestion() {
-        RadioButton selected = (RadioButton) optionsGroup.getSelectedToggle();
-        if (selected != null) {
-            String answer = selected.getText();
-            String correct = questions.get(currentIndex).getAnswer();
-            if (answer.equals(correct)) {
-                resultLabel.setText("Σωστό!");
-            } else {
-                resultLabel.setText("Λάθος! Η σωστή απάντηση ήταν: " + correct);
-            }
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        utilities.loadQuestions();
+        if (!questions.isEmpty()) {
+            showQuestion(questions.getFirst());
         }
-        currentIndex = (currentIndex + 1) % questions.size();
-        loadQuestion();
+        if (questions == null || questions.isEmpty()) {
+            utilities.showAlert("Failed to load the queasstions");
+        }
     }
 
-    static class Question {
-        private final String text, answer;
-        private final List<String> options;
-        public Question(String text, String answer, List<String> options) {
-            this.text = text; this.answer = answer; this.options = options;
+    public void showQuestion(Question q) {
+        questionLabel.setText(q.getQuestionText());
+        answersBox.getChildren().clear();
+
+        List<String> answers = new ArrayList<>(q.getIncorrectAnswers());
+        answers.add(q.getCorrectAnswer());
+        Collections.shuffle(answers);
+
+        for (String answer : answers) {
+            Button button = new Button(answer);
+            button.setMaxWidth(Double.MAX_VALUE);
+            button.setOnAction(e -> utilities.handleAnswer(q, answer));
+            answersBox.getChildren().add(button);
         }
-        public String getText() { return text; }
-        public String getAnswer() { return answer; }
-        public List<String> getOptions() { return options; }
+    }
+    public void showLeaderboard() {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setHeaderText("Game Over! Your score: " + score);
+        dialog.setContentText("Enter your name for the leaderboard:");
+        Optional<String> result = dialog.showAndWait();
+
+        result.ifPresent(name -> utilities.saveToLeaderboard(name, score));
     }
 }

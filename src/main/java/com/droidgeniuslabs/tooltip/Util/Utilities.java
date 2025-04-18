@@ -1,18 +1,23 @@
 package com.droidgeniuslabs.tooltip.Util;
 
+import com.droidgeniuslabs.tooltip.Controllers.TriviaGame;
+import com.droidgeniuslabs.tooltip.Model.Question;
+import com.droidgeniuslabs.tooltip.Model.ScoreEntry;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
-import javafx.animation.PauseTransition;
 import javafx.scene.control.*;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
-import javafx.util.Duration;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import java.awt.image.BufferedImage;
@@ -21,8 +26,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Utilities {
     private final String API_KEY = "acecfc556779dc60b6992973";
@@ -41,6 +45,20 @@ public class Utilities {
     private TextField daysInputField;
     private DatePicker baseDatePicker;
     private Label resultDateLabel;
+    private GridPane board;
+    private Label playerXScore, playerOScore, drawScore;
+    private ComboBox<String> difficultyBox;
+    private Button restartBtn;
+    private final Button[][] buttons = new Button[3][3];
+    private final boolean playerXTurn = true;
+    private final int xScore = 0;
+    private final int oScore = 0;
+    private final int draws = 0;
+    private List<Question> questions;
+    private int currentQuestion = 0;
+    private int score = 0;
+    private Label scoreLabel;
+
 
 
     public double convertToBytes(double value, @NotNull String unit) {
@@ -647,15 +665,6 @@ public class Utilities {
         String fullText = "HEX: " + hex + "\nRGB: " + rgb + "\nRGBA: " + rgba;
         copyToClipboard(fullText);
     }
-    public void toggleDarkMode(@NotNull Pane colorPane, boolean isDarkMode ) {
-        colorPane.setStyle("-fx-background-color: " + (isDarkMode ? "#333333" : "#FFFFFF") + ";");
-    }
-    public void showCopiedLabel() {
-        copiedLabel.setVisible(true);
-        PauseTransition pause = new PauseTransition(Duration.seconds(1.5));
-        pause.setOnFinished(e -> copiedLabel.setVisible(false));
-        pause.play();
-    }
     public double calculateSimpleInterest(double P, double R, double T) {
         return (P * R * T) / 100.0;
     }
@@ -675,5 +684,54 @@ public class Utilities {
         } catch (NumberFormatException e) {
             resultDateLabel.setText("Μη έγκυρος αριθμός ημερών.");
         }
+    }
+
+    public void loadQuestions() {
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            questions = mapper.readValue(new File("trivia.json"), new TypeReference<>() {});
+        } catch (IOException e) {
+            showAlert("Couldn't load questions.");
+            questions = new ArrayList<>();
+        }
+    }
+
+    public void handleAnswer(Question q, String answer) {
+        TriviaGame triviaGame = new TriviaGame();
+        if (answer.equals(q.getCorrectAnswer())) {
+            score++;
+        }
+        currentQuestion++;
+        scoreLabel.setText("Score: " + answer);
+
+        if (currentQuestion < questions.size()) {
+            triviaGame.showQuestion(questions.get(currentQuestion));
+        } else {
+            triviaGame.showLeaderboard();
+        }
+    }
+
+    public void saveToLeaderboard(String name, int score) {
+        ObjectMapper mapper = new ObjectMapper();
+        File file = new File("leaderboard.json");
+        List<ScoreEntry> leaderboard = new ArrayList<>();
+
+        try {
+            if (file.exists()) {
+                leaderboard = mapper.readValue(file, new TypeReference<>() {});
+            }
+            leaderboard.add(new ScoreEntry(name, score));
+            leaderboard.sort((a, b) -> b.getScore() - a.getScore());
+            mapper.writeValue(file, leaderboard);
+        } catch (IOException e) {
+            showAlert("Failed to save leaderboard.");
+        }
+    }
+    public void showAlert(String msg) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setHeaderText(null);
+        alert.setContentText(msg);
+        alert.getDialogPane().setMinHeight(Region.USE_COMPUTED_SIZE);
+        alert.showAndWait();
     }
 }

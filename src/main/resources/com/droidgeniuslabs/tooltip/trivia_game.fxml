@@ -2,17 +2,18 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
-<VBox xmlns="http://javafx.com/javafx" alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml" spacing="10"
-      fx:controller="com.droidgeniuslabs.tooltip.Controllers.TriviaGame"
-      prefHeight="400.0" prefWidth="600.0">
-    <Label fx:id="questionLabel" wrapText="true" style="-fx-font-size: 16;" />
-    <VBox spacing="10">
-        <RadioButton fx:id="optionA" toggleGroup="$optionsGroup" />
-        <RadioButton fx:id="optionB" toggleGroup="$optionsGroup" />
-        <RadioButton fx:id="optionC" toggleGroup="$optionsGroup" />
-        <RadioButton fx:id="optionD" toggleGroup="$optionsGroup" />
-    </VBox>
-    <Button text="Επόμενη Ερώτηση" onAction="#nextQuestion" />
-    <Label fx:id="resultLabel" style="-fx-font-size: 14; -fx-text-fill: green;" />
-</VBox>
+<?import javafx.scene.layout.BorderPane?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.droidgeniuslabs.tooltip.Controllers.TriviaGame"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <Label fx:id="scoreLabel" text="Score: 0" BorderPane.alignment="CENTER" style="-fx-font-size: 16px; -fx-padding: 10;" />
+    </top>
+    <center>
+        <VBox spacing="10" alignment="CENTER" >
+            <Label fx:id="questionLabel" wrapText="true" style="-fx-font-size: 18px;" />
+            <VBox fx:id="answersBox" spacing="10" />
+        </VBox>
+    </center>
+</BorderPane>
